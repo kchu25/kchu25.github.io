@@ -16,7 +16,7 @@
 
 
 html {
-  font-family: Verdana, sans-serif;
+  font-family: "Times New Roman";
   font-size: var(--small);
   color: var(--text-color);
 }
@@ -63,7 +63,7 @@ html {
 
 .page-foot {
   font-size: 80%;
-  font-family: Verdana, sans-serif;
+  font-family: "Times New Roman";
   color: #a6a2a0;
   text-align: center;
   margin-top: 6em;
@@ -272,8 +272,14 @@ td {
   padding-left: 10%;
 }
 
+.franklin-content .img-med img {
+    width: 55%;
+    text-align: center;
+    padding-left: 20%;
+}
+
 .franklin-content .img-small img {
-  width: 50%;
+  width: 45%;
   text-align: center;
   padding-left: 20%;
 }
@@ -284,7 +290,7 @@ td {
 
 body { counter-reset: eqnum; 
     margin: auto;
-    max-width: 900px;
+    max-width: 815px;
     text-align: left;
     background-color: #fff;
     word-wrap: break-word;

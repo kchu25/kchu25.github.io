@@ -1,4 +1,5 @@
 using Dates
+using BibTeX
 
 function hfun_bar(vname)
   val = Meta.parse(vname[1])
@@ -100,4 +101,33 @@ function hfun_custom_taglist()::String
     end
     write(io, "</ul>")
     return String(take!(io))
+end
+
+
+# BibTeX stuff
+
+function ref_item(ref, infos)
+    io = IOBuffer()
+
+    author = infos["author"]
+    author_last, author_first = strip.(split(author, ","))
+
+    write(io, "<li id=\"#$ref\">")
+    write(io, """$author_first $author_last, <span style="font-style:italic;">$(infos["title"])</span>, $(infos["year"]).""")
+    write(io, "</li>")
+    return String(take!(io))
+end
+
+
+function hfun_show_refs(refs)
+    _, allrefs = parse_bibtex(read(joinpath("_assets", "bibex.bib"), String))
+    out = IOBuffer()
+    write(out, "<ul>")
+    for ref in refs
+        infos = get(allrefs, ref, nothing)
+        isnothing(infos) && continue
+        write(out, ref_item(ref, infos))
+    end
+    write(out, "</ul>")
+    return String(take!(out))
 end

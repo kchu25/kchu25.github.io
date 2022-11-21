@@ -4,5 +4,6 @@
 <h1>Tags</h1>
 ~~~
 
-[comp-bio](/tag/comp-bio), 
+[computational-biology](/tag/comp-bio), 
+[linear-algebra](/tag/linear-algebra), 
 [representation-learning](/tag/representation-learning)

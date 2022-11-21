@@ -18,11 +18,17 @@ website_descr = "Shane Chu's website"
 website_url   = "https://kchu25.github.io/"
 +++
 
-
+@def prepath=""
 <!-- @def div_content = "container" -->
 
 <!--
 Add here global latex commands to use throughout your pages.
 -->
 \newcommand{\R}{\mathbb R}
+
+\newcommand{\xbm}{\bm x}
+\newcommand{\fbm}{\bm f}
+\newcommand{\sbm}{\bm s}
+\newcommand{\dbm}{\bm d}
+
 \newcommand{\scal}[1]{\langle #1 \rangle}
