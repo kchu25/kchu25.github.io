@@ -272,6 +272,16 @@ td {
   padding-left: 10%;
 }
 
+.franklin-content .img-med1 img {
+    width: 65%;
+    text-align: center;
+  }
+
+.franklin-content .img-medd img {
+    width: 89%;
+    text-align: center;
+  }
+
 .franklin-content .img-med img {
     width: 55%;
     text-align: center;
@@ -283,6 +293,24 @@ td {
   text-align: center;
   padding-left: 20%;
 }
+
+.franklin-content .img-small3 img {
+    width: 42%;
+    text-align: center;
+    padding-left: 27%;
+}
+
+.franklin-content .img-small2 img {
+    width: 45%;
+    text-align: center;
+    padding-left: 22%;
+  }
+
+.franklin-content .img-tiny img {
+    width: 22%;
+    text-align: center;
+    padding-left: 37%;
+  }
 
 /* ==================================================================
     KATEX

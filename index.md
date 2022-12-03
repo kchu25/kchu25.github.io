@@ -6,3 +6,4 @@ I am a Ph.D. candidate in computer science at Washington University in St. Louis
 A central theme in my research is to consider what representation is suited for DNA sequences that give the most helpful information. Traditionally, there are k-mers, position-weight-matrices, parametric statistical models like HMMs, and, more recently, deep learning. I am particularly interested in sparse representations, a framework that allows us to build techniques to solve problems in regulatory genomics.
 
 My name in Mandarin is Kuei-Hsien Chu (朱桂賢). Hsien pronounced like Shane, and that's how I got Shane. I grew up in Taiwan and have been living in the US since 2008.
+

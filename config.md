@@ -30,5 +30,7 @@ Add here global latex commands to use throughout your pages.
 \newcommand{\fbm}{\bm f}
 \newcommand{\sbm}{\bm s}
 \newcommand{\dbm}{\bm d}
+\newcommand{\bbm}{\bm b}
+\newcommand{\Pbm}{\bm P}
 
 \newcommand{\scal}[1]{\langle #1 \rangle}
