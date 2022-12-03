@@ -69,7 +69,7 @@ The alternate structural conformations is similar to multimeric binding; however
 
 Altogether, the binding modes such as variable spacing, multiple DBDs, multimeric binding, and alternate structural conformations make motif discovery more complicated than the simplified version of the problem above.
 
-Note that for a protein, these binding modes may not be mutually exclusive to each other. For example, we may have multimeric binding as well as variable spacing.
+Note that for a protein, these binding modes may not be mutually exclusive of each other. For example, we may have multimeric binding as well as variable spacing.
 
 
 #### References
