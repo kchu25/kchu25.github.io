@@ -9,7 +9,7 @@ For example, in regulatory genomics, we want to infer the following:
 
 - The DNA sequences' regulatory elements (e.g., motifs).
 - The key regulatory features in the DNA sequences give rise to the observed phenomenon.
-- The counterfactuals, i.e., the the minimal change to a DNA sequence that turns off the observed effects. 
+- The counterfactuals, e.g., a minimal change to a DNA sequence that turns off the observed effects. 
 
 
 My name in Mandarin is Kuei-Hsien Chu (朱桂賢). Hsien pronounced like Shane, and that's how I got Shane. I grew up in Taiwan and have been living in the US since 2008.
