@@ -8,7 +8,7 @@ A central theme in my research is to consider what representation is suited for 
 For example, in regulatory genomics, we want to infer the following:
 
 - The DNA sequences' regulatory elements, e.g., the motifs.
-- The key regulatory features in the DNA sequences give rise to the observed phenomenon.
+- The key regulatory elements in the DNA sequences give rise to the observed phenomenon.
 - The counterfactuals, e.g., a minimal change to a DNA sequence that turns off the observed effects. 
 
 
