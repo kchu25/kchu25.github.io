@@ -7,4 +7,4 @@
 [computational-biology](/tag/comp-bio), 
 [linear-algebra](/tag/linear-algebra), 
 [representation-learning](/tag/representation-learning),
-[motif-discovery](tag/motif-discovery)
+[motif-discovery](/tag/motif-discovery)
