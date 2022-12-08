@@ -27,7 +27,7 @@ We can then turn them into a multiple sequence alignment (MSA):
 
 This MSA, in turn, can be made into a *position weight matrix* (PWM) $\Pbm$. 
 
-We estimate the position weight matrix $\Pbm$ using the empirical frequency $\fbm_{\alpha i}$ of each nucleotide $\alpha$ at each position $i$ from the MSA. Each entry of the PWM $\Pbm$ is $\Pbm_{\alpha i} = \log_2 (\fbm_{\alpha i} / \bbm_\alpha)$, where $\bbm_\alpha$ is the assumed genomic background frequency for nucleotide $\alpha$. 
+We estimate the position weight matrix $\Pbm$ by first using the empirical frequency $\fbm_{\alpha i}$ of each nucleotide $\alpha$ at each position $i$ from the MSA. This step is equivalent to doing a maximum likelihood estimate of a product multinomial distribution. Then, we fill each $(\alpha, i)$-entry of the PWM $\Pbm$ by $\Pbm_{\alpha i} = \log_2 (\fbm_{\alpha i} / \bbm_\alpha)$, where $\bbm_\alpha$ is the assumed genomic background frequency for nucleotide $\alpha$.
 
 We can visualize the PWM $\Pbm$ in the following picture:
 
