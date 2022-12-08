@@ -25,7 +25,7 @@ $$\fbm : \textsf{amino acid composition of a C2H2-ZF} \rightarrow \textsf{bindin
 
 where the map $\fbm$ is called the *recognition code* in biology. The recognition code is very much a machine-learning problem. Several established tools exist, such as the [Interactive PWM predictor](http://zf.princeton.edu/logoMain.php) and [RCADE](http://rcade.ccbr.utoronto.ca/Help.html), which seek to characterize the recognition code. Both tools characterize the binding sites as [position weight matrices (PWM)](https://en.wikipedia.org/wiki/Position_weight_matrix).
 
-Whether to characterize the binding sites in the recognition code problem as a PWM is an open research question. PWM is a compact representation of the binding sites and a [local representation](../dist_rep/). It offers easy interpretations but at the same time, making simplifying assumptions –– e.g., an independent contribution from each position to the binding specificity. Some may argue that we need a more expressive representation to reveal more biological insights.
+Whether to characterize the binding sites in the recognition code problem as a PWM is an open research question. PWM is a compact representation of the binding sites and a [local representation](../dist_rep/). It offers easy interpretations but at the same time, making simplifying assumptions –– e.g., an independent contribution from each position to the binding specificity. Some argue that we need a more expressive representation to reveal more biological insights.
 
 #### What's advantageous about C2H2 zinc fingers for genome editing?
 
