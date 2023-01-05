@@ -1,8 +1,8 @@
-@def title = "The difference of convolutional dictionary learning and convolutional neural network in one picture"
+@def title = "The difference between convolutional dictionary learning and convolutional neural network in one picture"
 @def published = "5 January 2023"
 @def tags = ["representation-learning"]
 
-### The difference of convolutional dictionary learning and convolutional neural network in one picture
+### The difference between convolutional dictionary learning and convolutional neural network in one picture
 
 In the [talk](https://www.youtube.com/watch?v=lQzzhePX7X0) (at 21:57) given by the researcher [Brendt Wholberg](https://brendt.wohlberg.net/), the following slide illustrate the difference between a convolutional dictionary learning model (CDL) and a convolutional neural network (CNN).
 
