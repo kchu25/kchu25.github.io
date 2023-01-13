@@ -11,7 +11,7 @@ For example, in regulatory genomics, we want to infer the following:
 - The key regulatory elements in the DNA sequences give rise to the observed phenomenon.
 - The counterfactuals, e.g., a minimal change to a DNA sequence that turns off the observed effects. 
 
-We can obtain a sparse representation of DNA sequences using principled deep learning techniques -- one such approach is called deep unfolding. We use [deep unfolding to reveal many more hidden motifs not shown on  the JASPAR database](https://www.biorxiv.org/content/10.1101/2022.11.06.515322v3). Our result shows that sparse representation is a scalable and interpretable approach to biological sequence problems.
+We can obtain a sparse representation of DNA sequences using principled deep learning techniques -- one such approach is called deep unfolding. We use [sparse representations from deep unfolding to reveal many more hidden motifs not shown on  the JASPAR database](https://www.biorxiv.org/content/10.1101/2022.11.06.515322v3). Our result shows that sparse representation is a scalable and interpretable approach to biological sequence problems.
 
 My name in Mandarin is Kuei-Hsien Chu (朱桂賢). Hsien pronounced like Shane, and that's how I got Shane. I grew up in Taiwan and have been living in the US since 2008.
 
