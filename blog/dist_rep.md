@@ -1,4 +1,4 @@
-@def title = "Local representations vs. Distributed representations"
+@def title = "Local representations vs Distributed representations in one picture"
 @def published = "19 November 2022"
 @def tags = ["representation-learning"]
 

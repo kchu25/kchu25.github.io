@@ -36,7 +36,12 @@ However, it’s possible that after throwing an enormous amount of brain power i
 
 Nonetheless, recognition code is an excellent example showing that, given sufficient data, we can use clever modeling techniques and significantly impact biological science. -->
 
+---
+
+Update (4/7/2023):
+
+Recently, an article was published about using ZF as a recognition code. I haven't looked into it in detail; if you are interested, see [A universal deep-learning model for zinc finger design enables transcription factor reprogramming](https://www.nature.com/articles/s41587-022-01624-4).
 
 #### References
 
-{{show_refs gupta2014expanding najafabadi2015identification persikov2009 }}
+{{show_refs gupta2014expanding najafabadi2015identification persikov2009 ichikawa2023universal}}
