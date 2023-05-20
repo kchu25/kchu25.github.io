@@ -107,5 +107,6 @@ This works! A quick check with the CPU version's result shows that our adjoint i
 
 A side note: You may have noticed the line `L_inv = inv(A.L)`. Indeed, the inversion of a triangular matrix `A.L` still has quadratic time complexity, which is pretty darn slow for big matricies. Fortunately, in SVGP, the matrix $\Sigma$, i.e. the input matrix `Q` above is defined using what's called the "inducing points", which is ususally small. And because the inducing points is part of the model parameter of SVGP, you actually get to control the size of $\Sigma$.
 
+An adjoint example is [here](https://discourse.julialang.org/t/zygote-meaning-of-adjoint-add-a-b-add-a-b/36707/4) by Pbellive.
 
 Note: This post is done with Zygote version 0.6.61 and Julia version 1.9.
