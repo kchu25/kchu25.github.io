@@ -16,7 +16,7 @@ $$ \begin{align*}
     \end{align*}
 $$
 
-One could check, e.g. [Wei Yi's excellent tutorial](https://towardsdatascience.com/sparse-and-variational-gaussian-process-what-to-do-when-data-is-large-2d3959f430e7) or James Hensman's [Gaussian Process for big data](https://arxiv.org/pdf/1309.6835.pdf) for the derivation of ELBO for SVGP. In short, the KL divergence term in ELBO that looks like this:
+One could check, e.g. [Wei Yi's excellent tutorial](https://towardsdatascience.com/sparse-and-variational-gaussian-process-what-to-do-when-data-is-large-2d3959f430e7) or James Hensman's [Gaussian Process for big data](https://arxiv.org/pdf/1309.6835.pdf) for the derivation of ELBO for SVGP. In short, the KL divergence term in ELBO is expressed as:
 
 $$ \begin{align*}
     \text{KL divergence term in ELBO} = {\color{grey}\frac{1}{2}\bigg[}\log\frac{1}{\det\Sigma} + {\color{grey}n + \mu\top\mu + \text{trace}(\Sigma)\bigg]}
@@ -27,7 +27,7 @@ $$
 
 ### Differentiate the log-determinant of a matrix using Zygote.jl
 
- When $\Sigma$ is stored in CPU memory, the term $\log\det\Sigma$ involving the (positive definite) matrix $\Sigma$ works fine with Zygote.
+When $\Sigma$ is stored in CPU memory, the term $\log\det\Sigma$ involving the (positive definite) matrix $\Sigma$ works fine with Zygote.
 
 ```
 using Zygote
