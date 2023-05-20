@@ -88,9 +88,10 @@ function log_determinant(Q::CuMatrix)
     return 2*sum(log.(diag(A.L)))
 end
 
-@adjoint function log_determinant(Q::CuMatrix)
+@adjoint function log_determinant(X::CuMatrix)
     # Q positive definite so Q = LLᵀ by cholesky and thus Q⁻¹ = L⁻ᵀL⁻¹
-    A = cholesky(Q)
+    # numerically stable way to invert a covariance matrix: https://mathoverflow.net/questions/9001/inverting-a-covariance-matrix-numerically-stable
+    A = cholesky(Sigma)
     L_inv = inv(A.L)
     A_inv = L_inv'L_inv  
     return 2*sum(log.(diag(A.L))), △ -> (△ * A_inv', )
@@ -104,7 +105,7 @@ And now we have:
 ```
 This works! A quick check with the CPU version's result shows that our adjoint is returning the correct gradient of the log determinant of $\Sigma$.
 
-A side note: You may have noticed the line `L_inv = inv(A.L)`. Indeed, the inversion of a triangular matrix `A.L` still has quadratic time complexity, which is pretty darn slow for big matricies. Fortunately, in SVGP, this is defined using what's called the "inducing points", which is ususally small. And because the inducing points is part of the model parameter of SVGP, you actually get to control that size of the input matrix `Q`.
+A side note: You may have noticed the line `L_inv = inv(A.L)`. Indeed, the inversion of a triangular matrix `A.L` still has quadratic time complexity, which is pretty darn slow for big matricies. Fortunately, in SVGP, the matrix $\Sigma$, i.e. the input matrix `Q` above is defined using what's called the "inducing points", which is ususally small. And because the inducing points is part of the model parameter of SVGP, you actually get to control the size of $\Sigma$.
 
 
 Note: This post works with Zygote version 0.6.61.
