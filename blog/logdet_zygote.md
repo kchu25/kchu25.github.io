@@ -1,6 +1,6 @@
 @def title = "Differentiate the log-determinant of a matrix on GPU using Zygote.jl"
 @def published = "19 May 2023"
-@def tags = ["machine-learning", "automatic-differentiation", "Julia"]
+@def tags = ["machine-learning", "automatic-differentiation", "julia"]
 
 
 ## Differentiate the log-determinant of a matrix on GPU using Zygote.jl
@@ -104,7 +104,7 @@ And now we have:
 ```
 This works! A quick check with the CPU version's result shows that our adjoint is returning the correct gradient of the log determinant of $\Sigma$.
 
-A side note: You may have noticed the line `L_inv = inv(A.L)`. Indeed, the inversion of a triangular matrix `A.L` still has quadratic time complexity, which is pretty darn slow for big matricies. Fortunately, in SVGP, this is defined using what's called the "inducing points", which is ususally small. And because the inducing points is part of the model parameter, you can actually control that size of the input matrix `Q`.
+A side note: You may have noticed the line `L_inv = inv(A.L)`. Indeed, the inversion of a triangular matrix `A.L` still has quadratic time complexity, which is pretty darn slow for big matricies. Fortunately, in SVGP, this is defined using what's called the "inducing points", which is ususally small. And because the inducing points is part of the model parameter of SVGP, you actually get to control that size of the input matrix `Q`.
 
 
 Note: This post works with Zygote version 0.6.61.
