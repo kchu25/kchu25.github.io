@@ -109,4 +109,4 @@ A side note: You may have noticed the line `L_inv = inv(A.L)`. Indeed, the inver
 
 An adjoint example is [here](https://discourse.julialang.org/t/zygote-meaning-of-adjoint-add-a-b-add-a-b/36707/4) by Pbellive.
 
-Note: This post is done with Zygote version 0.6.61 and Julia version 1.9.
+Note: This post is done on Zygote version 0.6.61 and Julia version 1.9.
