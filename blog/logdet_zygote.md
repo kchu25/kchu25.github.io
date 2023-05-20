@@ -88,10 +88,10 @@ function log_determinant(Q::CuMatrix)
     return 2*sum(log.(diag(A.L)))
 end
 
-@adjoint function log_determinant(X::CuMatrix)
+@adjoint function log_determinant(Q::CuMatrix)
     # Q positive definite so Q = LLᵀ by cholesky and thus Q⁻¹ = L⁻ᵀL⁻¹
     # numerically stable way to invert a covariance matrix: https://mathoverflow.net/questions/9001/inverting-a-covariance-matrix-numerically-stable
-    A = cholesky(Sigma)
+    A = cholesky(Q)
     L_inv = inv(A.L)
     A_inv = L_inv'L_inv  
     return 2*sum(log.(diag(A.L))), △ -> (△ * A_inv', )
