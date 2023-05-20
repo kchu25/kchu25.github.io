@@ -1,6 +1,6 @@
 @def title = "Differentiate the log-determinant of a matrix on GPU using Zygote.jl"
 @def published = "19 May 2023"
-@def tags = ["machine-learning", "automatic-differentiation"]
+@def tags = ["machine-learning", "automatic-differentiation", "Julia"]
 
 
 ## Differentiate the log-determinant of a matrix on GPU using Zygote.jl
