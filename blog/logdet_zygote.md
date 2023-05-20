@@ -10,7 +10,7 @@ Does the computation of log-determinant of a matrix ever occur in the computatio
 
 Surprisingly, it does! This arises in the context of Sparse Variational Gaussian Process (SVGP).
 
-In SVGP, our goal is to maximize a quantity known as the evidence lower bound (ELBO). The ELBO comprises of two terms:
+In SVGP, our goal is to maximize a quantity known as the evidence lower bound (ELBO). The ELBO comprises of two terms, which basically says:
 $$ \begin{align*}
     \text{ELBO} = \text{expected log likelihood term} - \text{KL divergence term}
     \end{align*}
