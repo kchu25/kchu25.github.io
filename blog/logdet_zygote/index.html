@@ -30,10 +30,10 @@ CUDA.allowscalar(<span class=hljs-literal >false</span>)
     <span class=hljs-keyword >return</span> <span class=hljs-number >2</span>*sum(log.(diag(A.L)))
 <span class=hljs-keyword >end</span>
 
-<span class=hljs-meta >@adjoint</span> <span class=hljs-keyword >function</span> log_determinant(X::CuMatrix)
+<span class=hljs-meta >@adjoint</span> <span class=hljs-keyword >function</span> log_determinant(Q::CuMatrix)
     <span class=hljs-comment ># Q positive definite so Q = LLᵀ by cholesky and thus Q⁻¹ = L⁻ᵀL⁻¹</span>
     <span class=hljs-comment ># numerically stable way to invert a covariance matrix: https://mathoverflow.net/questions/9001/inverting-a-covariance-matrix-numerically-stable</span>
-    A = cholesky(Sigma)
+    A = cholesky(Q)
     L_inv = inv(A.L)
     A_inv = L_inv&#x27;L_inv  
     <span class=hljs-keyword >return</span> <span class=hljs-number >2</span>*sum(log.(diag(A.L))), △ -&gt; (△ * A_inv&#x27;, )
