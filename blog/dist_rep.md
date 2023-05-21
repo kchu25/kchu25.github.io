@@ -1,6 +1,6 @@
 @def title = "Local representations vs Distributed representations in one picture"
 @def published = "19 November 2022"
-@def tags = ["representation-learning"]
+@def tags = ["representation-learning", "machine-learning"]
 
 ### Local representations vs. Distributed representations
 

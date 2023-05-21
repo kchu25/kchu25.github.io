@@ -1,6 +1,6 @@
 @def title = "Convolutional Dictionary Learning vs. Convolutional Neural Network in one picture"
 @def published = "5 January 2023"
-@def tags = ["representation-learning"]
+@def tags = ["representation-learning", "machine-learning"]
 
 ### Understand convolutional dictionary learning vs convolutional neural network in one picture
 
