@@ -307,10 +307,26 @@ td {
   }
 
 .franklin-content .img-tiny img {
-    width: 22%;
+    width: 32%;
     text-align: center;
     padding-left: 37%;
   }
+
+.franklin-content .img-me img {
+    width: 24%;
+    text-align: center;
+    padding-right: 0%;
+    padding-left: 0%;
+    float: right;
+    border: 1px solid black;
+}
+
+.image-left {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    float: right;
+}
 
 /* ==================================================================
     KATEX
