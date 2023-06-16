@@ -1,7 +1,6 @@
 @def title = "schu - About"
 @def tags = ["syntax", "code"]
 
-
 @@img-me ![Proguard](./me.jpg) @@
 
 I am a Ph.D. candidate in computer science at Washington University in St. Louis. My advisor is Gary Stormo. My research interest is developing computational methods for computational biology problems.
@@ -12,8 +11,8 @@ For example, in regulatory genomics, we want to infer the following:
 
 - The DNA sequences' regulatory elements, e.g., the motifs.
 - The key regulatory elements in the DNA sequences give rise to the observed phenomenon.
-- The counterfactuals, e.g., a minimal change to a DNA sequence that turns off the observed effects. 
+- The counterfactuals, e.g., a minimal change to a DNA sequence that turns off the observed effects.
 
-We can obtain a sparse representation of DNA sequences using principled deep learning techniques -- one such approach is called deep unfolding. We use [sparse representations from deep unfolding to reveal many more hidden motifs not shown on  the JASPAR database](https://academic.oup.com/bioinformatics/advance-article/doi/10.1093/bioinformatics/btad378/7192989?utm_source=advanceaccess&utm_campaign=bioinformatics&utm_medium=email). Our result shows that sparse representation is a scalable and interpretable approach to biological sequence problems.
+We can obtain a sparse representation of DNA sequences using principled deep learning techniques, e.g., deep unfolding. We use [sparse representations to reveal many more hidden motifs not shown on the JASPAR database](https://academic.oup.com/bioinformatics/advance-article/doi/10.1093/bioinformatics/btad378/7192989?utm_source=advanceaccess&utm_campaign=bioinformatics&utm_medium=email). Our result shows that sparse representation is a scalable and interpretable approach to biological sequence problems.
 
 My name in Mandarin is Kuei-Hsien Chu (朱桂賢). Hsien pronounced like Shane, and that's how I got Shane. I grew up in Taiwan and have been living in the US since 2008.
