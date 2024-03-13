@@ -43,11 +43,11 @@ $$\begin{align*}
     &=\argmin_{\zbm\in [0,1]^n}\, \lambda\|\zbm\|_1+ \frac{1}{2\eta}\|\zbm-\xbm\|^2_2
 \end{align*}
 $$
-since this is a separable problem, we can focus on individual components:
+since this is a separable problem, we can focus on the individual components:
 $$
 \text{prox}_{g,\eta}(x_i) = \argmin_{z_i\in [0,1]} \lambda z_i + \frac{1}{2\eta}(z_i-x_i)^2
 $$
 and hence the solution to this proximal operator problem is
 $$
-\min\{\,\max \{0,\, x_i-\eta\lambda\, \},\, 1\}
+\min\{\,\max \{0,\, x_i-\eta\lambda\, \},\, 1\},\,\, \text{for each component } x_i
 $$
