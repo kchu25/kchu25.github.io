@@ -6,6 +6,7 @@
 
 [computational-biology](/tag/comp-bio),
 [linear-algebra](/tag/linear-algebra),
+[optimization](/tag/optimization),
 [representation-learning](/tag/representation-learning),
 [motif-discovery](/tag/motif-discovery),
 [machine-learning](/tag/machine-learning),

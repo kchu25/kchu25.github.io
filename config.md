@@ -27,10 +27,14 @@ Add here global latex commands to use throughout your pages.
 \newcommand{\R}{\mathbb R}
 
 \newcommand{\xbm}{\bm x}
+\newcommand{\ubm}{\bm u}
+\newcommand{\ybm}{\bm y}
+\newcommand{\zbm}{\bm z}
 \newcommand{\fbm}{\bm f}
 \newcommand{\sbm}{\bm s}
 \newcommand{\dbm}{\bm d}
 \newcommand{\bbm}{\bm b}
 \newcommand{\Pbm}{\bm P}
+\newcommand{\Abm}{\bm A}
 
 \newcommand{\scal}[1]{\langle #1 \rangle}
