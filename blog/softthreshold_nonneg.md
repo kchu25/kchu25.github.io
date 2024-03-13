@@ -7,6 +7,7 @@ I always seemed to forget how to derive this sort of things. So here we go.
 
 Proximal gradient descent is for solving the problem of this form:
 
+
 $$\min_{\zbm} f(\zbm)+g(\zbm)$$
 
 where $f$ is a differentiable but $g$ is not.
