@@ -28,6 +28,8 @@ $$
 \xbm^{(k)} = \text{prox}_{g,\eta^k}(\xbm^{(k-1)}-\eta^k\nabla f(\xbm^{(k-1)})),\quad k=1,2,3...
 $$
 
+There are many theoretical properties to show that this basically behaves like gradient descent. I'd skip that for now.
+
 ### Soft-thresholding operator with [0,1] constraint
 
 The problem I'm interested in is 
