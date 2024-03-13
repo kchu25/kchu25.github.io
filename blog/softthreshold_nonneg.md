@@ -51,5 +51,6 @@ $$
 $$
 and hence the solution to this proximal operator problem is
 $$
-\min\{\,\max \{0,\, x_i-\eta\lambda\, \},\, 1\},\,\, \text{for each component } x_i
+\min\{\,\max \{0,\, x_i-\eta\lambda\, \},\, 1\}
 $$
+for each component $x_i$.
