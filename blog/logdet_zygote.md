@@ -110,3 +110,27 @@ A side note: You may have noticed the line `L_inv = inv(A.L)`. Indeed, the inver
 An adjoint example is [here](https://discourse.julialang.org/t/zygote-meaning-of-adjoint-add-a-b-add-a-b/36707/4) by Pbellive.
 
 Note: This post is done on Zygote version 0.6.61 and Julia version 1.9.
+
+----------------
+update: 4/4/2024
+
+The following code using `ChainRulesCore` produces the same result.
+
+```
+function log_determinant(Q::CuMatrix)
+    A = cholesky(Q)
+    return 2*sum(log.(diag(A.L)))
+end
+
+function ChainRulesCore.rrule(::typeof(log_determinant), Q::CuMatrix)
+    A = cholesky(Q)
+    L_inv = inv(A.L)
+    A_inv = L_inv' * L_inv
+    function log_determinant_pullback(R̄)
+        f̄ = NoTangent()
+        Q̄ = R̄ * A_inv'
+        return f̄, Q̄
+    end
+    return 2*sum(log.(diag(A.L))), log_determinant_pullback
+end
+```
