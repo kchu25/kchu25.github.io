@@ -3,7 +3,7 @@
 
 @@img-me ![Proguard](./me.jpg) @@
 
-I am a post-doctoral research scientist at Columbia University, collaborating with Chaolin Zhang in the [Zhang Lab](https://zhanglab.c2b2.columbia.edu/). Before this, I completed my Ph.D. in computer science at Washington University in St. Louis under the guidance of Gary Stormo. My research interest is developing computational methods for problems related to protein-DNA/RNA interactions.
+I am a post-doctoral research scientist at Columbia University, collaborating with Chaolin Zhang other wonderful members in the [Zhang Lab](https://zhanglab.c2b2.columbia.edu/). Before this, I completed my Ph.D. in computer science at Washington University in St. Louis under the guidance of Gary Stormo. My research interest is developing computational methods for problems related to protein-DNA/RNA interactions.
 
 A central theme in my research is to consider what representation is suited for DNA sequences that give the most helpful information. Traditionally, there are k-mers, position-weight-matrices, parametric statistical models like HMMs, and, more recently, deep neural networks. I am particularly interested in sparse representations, a rich framework that allows us to build techniques to answer challenging inferential questions in regulatory genomics.
 
