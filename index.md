@@ -3,7 +3,7 @@
 
 @@img-me ![Proguard](./me.jpg) @@
 
-I am a Ph.D. candidate in computer science at Washington University in St. Louis. My advisor is Gary Stormo. My research interest is developing computational methods for computational biology problems.
+I am a post-doctoral research scientist at Columbia University, collaborating with Chaolin Zhang in the [Zhang Lab](https://zhanglab.c2b2.columbia.edu/). Before this, I completed my Ph.D. in computer science at Washington University in St. Louis under the guidance of Gary Stormo. My research interest is developing computational methods for problems involved with protein-DNA/RNA interactions.
 
 A central theme in my research is to consider what representation is suited for DNA sequences that give the most helpful information. Traditionally, there are k-mers, position-weight-matrices, parametric statistical models like HMMs, and, more recently, deep neural network. I am currently interested in sparse representations, a framework that allows us to build techniques to answer challenging inferential questions in regulatory genomics.
 
