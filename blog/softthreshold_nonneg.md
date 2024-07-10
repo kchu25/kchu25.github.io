@@ -3,7 +3,7 @@
 @def tags = ["optimization"]
 
 ### Proximal gradient descent
-I always seemed to forget how to derive this sort of things. So here we go.
+I often forget how to derive proximal gradient descent, so here we go.
 
 Proximal gradient descent is for solving the problem of this form:
 
@@ -11,8 +11,7 @@ Proximal gradient descent is for solving the problem of this form:
 $$\min_{\zbm} f(\zbm)+g(\zbm)$$
 
 where $f$ is a differentiable but $g$ is not.
-The idea of proximal operator is to do a quadratic approximation of $f$ at some point $\xbm$ and solve that with $g$.
-Moreover, replace the hessian $\nabla^2 f$ by $\frac{1}{\eta}I$. We want to solve:
+The idea of proximal operator is to do a quadratic approximation of $f$ at some point $\xbm$ and solve that with $g$. We replace the hessian $\nabla^2 f$ by $\frac{1}{\eta}I$. We want to solve:
 $$ \begin{align*}
     &\argmin_{\zbm}\, f(\xbm)+\nabla f(\xbm)^T(\zbm-\xbm)+\frac{1}{2\eta}\|\zbm-\xbm\|^2_2 + g(\zbm)\\
     =&\argmin_{\zbm}\, \frac{1}{2\eta}\|\zbm-(\xbm-\eta\nabla f(\xbm))\|^2_2 + g(\zbm)
