@@ -15,7 +15,7 @@ i.e., a dataset whose entries are all DNA strings.
 
 This dataset usually is obtained from a sequencing experiment, e.g., Chip-Seq. 
 
-In addition, this dataset is associated with a protein. This protein tends to bind to a set of similar DNA substrings embedded in those DNA strings, and we need to find out where those substrings occurred.
+In addition, this dataset is associated with a protein. The assumption is that this protein tends to bind to a set of similar DNA substrings embedded in those DNA strings (In biology it's colloquially called the protein's binding *specificity*), and we need to find out where those substrings occurred.
 
 Let's assume we possess a well-defined problem formulation alongside an effective algorithm for identifying this set of similar string -- referred to as the purple substrings in the dataset:
 

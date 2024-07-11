@@ -3,7 +3,7 @@
 @def tags = ["optimization"]
 
 ### Proximal gradient descent
-I often forget how to derive proximal gradient descent, so here we go.
+I often forget how to derive proximal gradient descent. So here we go.
 
 Proximal gradient descent is for solving the problem of this form:
 

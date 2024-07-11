@@ -27,9 +27,9 @@ $$\fbm * \xbm = \begin{pmatrix} f_1 & 0   & 0   & 0   \\
                                 0   & 0   & f_3 & f_2 \\
                                 0   & 0   & 0   & f_3
 \end{pmatrix}\begin{pmatrix}0 \\ 1 \\ 0 \\ 0 \end{pmatrix}=\begin{pmatrix} 0 \\ f_1 \\ f_2 \\ f_3 \\ 0 \\ 0 \end{pmatrix}$$
-What does this say? If we think about that $\fbm * \xbm$ as some kind of signal, then this is saying that $\fbm$ as a "feature" is presented in the span from the 2nd to the 4th entries.
+What does this say? If we think about that $\fbm * \xbm$ as some kind of signal, then this is saying that $\fbm$ as a feature is presented in the span from the 2nd to the 4th entries.
 
-We can leverage this intuition to think about applications related to bioinformatics. If the signal is a DNA string, and the feature represents a motif, e.g., it could be a k-mer, or a position frequency matrix, etc., then we have something meaningful: the sparse vector $\xbm$ indicates where the motif $\fbm$ is presented in the DNA string. Moreover, the non-zero entry in $\xbm$ doesn't need to be $1$. It could be an arbitrary value signifying the "strength" of the presense of $\fbm$ in the DNA string. 
+We can leverage this intuition to think about applications related to bioinformatics. If the signal is a DNA string, and the feature represents a motif, e.g., it could be a k-mer, or a position frequency matrix, etc., then we have something meaningful: the sparse vector $\xbm$ indicates where the motif $\fbm$ is presented in the DNA string. Moreover, the non-zero entry in $\xbm$ doesn't need to be $1$. It could be an arbitrary value signifying the strength of the presense of $\fbm$ in the DNA string. 
 
-Of course, the description above is just a simple analogy. To develop this idea further, we look at a classic problem in signal processing: [convolutional dictionary learning](../cdl).
+The description above is just an analogy. To develop this idea further, we look at a classic problem in signal processing: [convolutional dictionary learning](../cdl).
 
