@@ -14,5 +14,5 @@ In (a) the local representation, we represent different concepts in the model us
 
 In (b) the distributed representation, we represent different concepts in the model using various combinations of parameters.
 
-It makes a huge difference in practice when deciding which representation to use for modeling tasks. The number of concepts one could represent in a local representation is linear in the number of parameters. The number of concepts one could describe in a distributed representation is roughly exponential in the number of parameters (See this [tutorial](https://www.youtube.com/watch?v=-SY4-GkDM8g) at the 26:53 mark by Ruslan Salakhutdinov). Thus, a distributed representation model can use fewer parameters to describe much more complicated concepts.
+It makes a big difference in practice when deciding which representation to use for modeling tasks. The number of concepts one could represent in a local representation is linear in the number of parameters. The number of concepts one could describe in a distributed representation is roughly exponential in the number of parameters (See [this](https://www.youtube.com/watch?v=-SY4-GkDM8g) at the 26:53 mark by Ruslan Salakhutdinov). So a distributed representation model can use fewer parameters to describe much more complicated concepts.
 
