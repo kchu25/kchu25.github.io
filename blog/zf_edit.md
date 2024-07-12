@@ -14,7 +14,7 @@ At this time of writing, using a Zinc finger (C2H2-ZF) to edit DNA sequences sou
 
 There are much easier tools to edit DNA sequences, e.g., CRISPR Cas 9.
 
-Like its name, C2H2-ZF proteins use their "fingers" to interact with the DNA. We now have pretty standard technologies to make the "fingers" of C2H2-ZF, i.e., the fingers are now our lego bricks. The bottleneck is that we don't have a clear picture of how the composition of the "fingers" of a C2H2-ZF affects its DNA binding sites.
+Like its name, C2H2-ZF proteins use their "fingers" to interact with the DNA. We now have pretty standard technologies to make the fingers of C2H2-ZF, i.e., the fingers are now our lego bricks. The bottleneck is that we don't have a clear picture of how the composition of the fingers of a C2H2-ZF affects its DNA binding sites.
 
 Exhaustively checking the different compositions of C2H2-ZF and their binding sites is not an option since protein engineering is expensive.
 

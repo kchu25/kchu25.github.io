@@ -10,7 +10,7 @@ We can understand the difference between local vs. distributed representation in
 
 @@img-small ![local vs. distributed](/blog/pics/local_distributed.png) @@
 
-In (a) the local representation, we represent different "concepts" in the model using a distinct set of parameters. The picture illustrates a local representation using one-hot encodings, where each possible one-hot vector represents a single concept (e.g., banana, mango, dog).
+In (a) the local representation, we represent different concepts in the model using a distinct set of parameters. The picture illustrates a local representation using one-hot encodings, where each possible one-hot vector represents a single concept (e.g., banana, mango, dog).
 
 In (b) the distributed representation, we represent different concepts in the model using various combinations of parameters.
 

@@ -47,7 +47,7 @@ One complex mechanism through which a protein can bind to DNA is via *variable s
 
 ![vs](/blog/pics/motif/v-spacing.png)
 
-In variable spacing, the binding sites are fragmented into distinct parts. It's a common biological terminology to denote the separation between these parts as a "spacer" when a protein binds to the DNA.
+In variable spacing, the binding sites are fragmented into distinct parts. It's a common biological terminology to denote the separation between these parts as a spacer when a protein binds to the DNA.
 
 Another scenario involves *multiple DNA binding domains* (DBDs):
 
@@ -59,13 +59,13 @@ Additionally, we can also have a situation called *multimeric binding*:
 
 ![vs](/blog/pics/motif/multimeric-b.png)
 
-In multimeric binding, once more, the protein features more than one binding site. However, in this scenario, one binding site represents an "extended" version of another, meaning that the binding sites overlap.
+In multimeric binding, once more, the protein features more than one binding site. However, in this scenario, one binding site represents an extended version of another, meaning that the binding sites overlap.
 
 Last, we have *alternate structural conformations*:
 
 ![vs](/blog/pics/motif/asc.png)
 
-In summary, these "situations," encompassing binding modes such as variable spacing, multiple DBDs, multimeric binding, and alternate structural conformations, collectively render motif discovery significantly more intricate than the simplified version of the problem discussed earlier.
+In summary, these situations, encompassing binding modes such as variable spacing, multiple DBDs, multimeric binding, and alternate structural conformations, collectively render motif discovery significantly more intricate than the simplified version of the problem discussed earlier.
 
 Moreover, these binding modes for a protein may not necessarily be mutually exclusive. For instance, a protein could exhibit binding modes that encompass both multimeric binding and variable spacing.
 
