@@ -11,4 +11,5 @@
 [motif-discovery](/tag/motif-discovery),
 [machine-learning](/tag/machine-learning),
 [automatic-differentiation](/tag/automatic-differentiation),
-[julia](/tag/julia)
+[julia](/tag/julia),
+[probabilistic-data-structure](/tag/p-datastructure)
