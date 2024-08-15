@@ -1,6 +1,6 @@
 @def title = "Universal hash functions (practical)"
 @def published = "15 August 2024"
-@def tags = ["probabilistic-data-structure", "julia"]
+@def tags = ["probabilistic-data-structures", "julia"]
 
 ### Universal hash functions
 The definition of universal hash function is as follows:

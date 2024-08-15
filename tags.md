@@ -12,4 +12,4 @@
 [machine-learning](/tag/machine-learning),
 [automatic-differentiation](/tag/automatic-differentiation),
 [julia](/tag/julia),
-[probabilistic-data-structure](/tag/p-datastructure)
+[probabilistic-data-structures](/tag/probabilistic-data-structures)
