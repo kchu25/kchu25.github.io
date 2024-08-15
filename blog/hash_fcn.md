@@ -11,7 +11,7 @@ The definition of universal hash function is as follows:
  @@
 
 
-Constructing a universal hash function from a family of such functions is straightforward. Here's how we can do it:
+Constructing a universal hash function from a family of such functions is straightforward. Here's a way to do it:
 * Fix a prime number $M$ 
 * Suppose that the keys in the universe can be encoded as a vector of positive integers as $(x_1,x_2,\dots,x_k)$
 * Uniformly choose numbers $r_1,r_2,\dots,r_k$ from $\{0,1,\dots,M-1\}$
