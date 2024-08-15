@@ -13,7 +13,7 @@ The definition of universal hash function is as follows:
 
 Ok, how to construct one from such a family? It's actually pretty straight-forward. We just need to:
 * Fix a prime number $M$ 
-* Suppose that the keys in the universe can be encoded as a vector of integers as $(x_1,x_2,\dots,x_k)$
+* Suppose that the keys in the universe can be encoded as a vector of positive integers as $(x_1,x_2,\dots,x_k)$
 * Uniformly choose numbers $r_1,r_2,\dots,r_k$ from $\{0,1,\dots,M-1\}$
 and define 
 $$h(x) = (r_1x_1+\cdots+r_kx_k)\,\,\text{mod}\,\,M$$
