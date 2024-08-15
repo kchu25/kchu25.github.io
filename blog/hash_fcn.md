@@ -13,8 +13,8 @@ The definition of universal hash function is as follows:
 
 Constructing a universal hash function from a family of such functions is straightforward. Here's a way to do it:
 * Fix a prime number $M$ 
-* Suppose that the keys in the universe can be encoded as a vector of positive integers as $(x_1,x_2,\dots,x_k)$
-* Uniformly choose numbers $r_1,r_2,\dots,r_k$ from $\{0,1,\dots,M-1\}$
+* Assume that the keys in the universe can be encoded as vectors of positive integers $(x_1,x_2,\dots,x_k)$
+* Uniformly choose numbers $r_1,r_2,\dots,r_k$ from the set $\{0,1,\dots,M-1\}$
 * Define the hash function as 
     $$h(x) = (r_1x_1+\cdots+r_kx_k)\,\,\text{mod}\,\,M$$
 Done! We've now constructed a universal hash function $h$ with a collsion probability $1/M$. You can find a proof of this, e.g. in this lecture [here](https://www.cs.cmu.edu/~avrim/451f11/lectures/lect1004.pdf) by Arvim Blum).
