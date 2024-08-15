@@ -6,18 +6,18 @@
 The definition of universal hash function is as follows:
 
 @@graybox
- A family of hash functions $\mathcal H$ mapping to a set of keys $U$ to a range of integers $\{0,1,\dots,M-1\}$ is called __*universal*__ if any two distinct keys $x,y\in U$ the probability that a randomly chosen hash function $h$ from $\mathcal H$ maps $x$ and $y$ to the same value is at most $\frac{1}{M}$: 
+ A family of hash functions $\mathcal H$ mapping to a set of keys $U$ to a range of integers $\{0,1,\dots,M-1\}$ is called __*universal*__ if any two distinct keys $x,y\in U$ the probability that a hash function $h$ from $\mathcal H$ maps $x$ and $y$ to the same value is at most $\frac{1}{M}$: 
  $$\underset{h\in \mathcal H}{\mathbb P}\left[h(x)=h(y)\right]\leq \frac{1}{M}$$
  @@
 
 
-Ok, how to construct one from such a family? It's actually pretty straight-forward (see proof [here](https://www.cs.cmu.edu/~avrim/451f11/lectures/lect1004.pdf) by Arvim Blum). We just need to:
+Ok, how to construct one from such a family? It's actually pretty straight-forward. We just need to:
 * Fix a prime number $M$ 
 * Suppose that the keys in the universe can be encoded as a vector of integers as $(x_1,x_2,\dots,x_k)$
 * Uniformly choose numbers $r_1,r_2,\dots,r_k$ from $\{0,1,\dots,M-1\}$
 and define 
 $$h(x) = (r_1x_1+\cdots+r_kx_k)\,\,\text{mod}\,\,M$$
-Done. We now have a universal hash function $h$ that has a collsion probability $1/M$.
+Done. We now have a universal hash function $h$ that has a collsion probability $1/M$ (see proof e.g. [here](https://www.cs.cmu.edu/~avrim/451f11/lectures/lect1004.pdf) by Arvim Blum).
 
 Sometimes, the prime number $M$ is inconvenient to work with as we want to restrict the range of the output to $\{0,\dots,N-1\}$, where $N < M$. What we can do is to simply modify the hash function to be
 
