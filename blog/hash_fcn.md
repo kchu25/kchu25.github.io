@@ -17,7 +17,7 @@ and define
 $$h(x) = (r_1x_1+\cdots+r_kx_k)\,\,\text{mod}\,\,M$$
 Done. We now have a universal hash function $h$ that has a collsion probability $1/M$.
 
-Sometimes, the prime number $M$ is inconvenient to work with as we want to restrict the range of the output to $\{0,\dots,N-1\}$, where $N < M$. What we can do is to modify the hash function to be
+Sometimes, the prime number $M$ is inconvenient to work with as we want to restrict the range of the output to $\{0,\dots,N-1\}$, where $N < M$. What we can do is to simply modify the hash function to be
 
 $$h(x) = (r_1x_1+\cdots+r_kx_k)\,\,\text{mod}\,\,M \,\, \text{mod}\,\, N$$
 
