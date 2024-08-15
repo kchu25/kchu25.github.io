@@ -11,21 +11,21 @@ The definition of universal hash function is as follows:
  @@
 
 
-Ok, how to construct one from such a family? It's actually pretty straight-forward. We just need to:
+Constructing a universal hash function from a family of such functions is straightforward. Here's how we can do it:
 * Fix a prime number $M$ 
 * Suppose that the keys in the universe can be encoded as a vector of positive integers as $(x_1,x_2,\dots,x_k)$
 * Uniformly choose numbers $r_1,r_2,\dots,r_k$ from $\{0,1,\dots,M-1\}$
-and define 
-$$h(x) = (r_1x_1+\cdots+r_kx_k)\,\,\text{mod}\,\,M$$
-Done. We now have a universal hash function $h$ that has a collsion probability $1/M$ (see proof e.g. [here](https://www.cs.cmu.edu/~avrim/451f11/lectures/lect1004.pdf) by Arvim Blum).
+* Define the hash function as 
+    $$h(x) = (r_1x_1+\cdots+r_kx_k)\,\,\text{mod}\,\,M$$
+Done! We've now constructed a universal hash function $h$ with a collsion probability $1/M$. You can find a proof of this, e.g. in this lecture [here](https://www.cs.cmu.edu/~avrim/451f11/lectures/lect1004.pdf) by Arvim Blum).
 
-Sometimes, the prime number $M$ is inconvenient to work with as we want to restrict the range of the output to $\{0,\dots,N-1\}$, where $N < M$. What we can do is to simply modify the hash function to be
+However, in some cases, the prime number $M$ might be inconvenient to work with, especially if we want to restrict the range of the output to $\{0,\dots,N-1\}$, where $N < M$. To address this, we can modify the hash function as follows:
 
 $$h(x) = (r_1x_1+\cdots+r_kx_k)\,\,\text{mod}\,\,M \,\, \text{mod}\,\, N$$
 
-Now the collision probability goes up from $1/M$ to  $1/N$. Loosely speaking, this is because since $M>N$, the value $h(x)\,\,\text{mod}\,\,N$ reduces the ouput space in a way that $\{0,\dots,N-1\}$ correspond to $\lfloor \frac{M}{N} \rfloor + 1$ values from the original range $\{0,\dots,M-1\}$.
+Now the collision probability increases from $1/M$ to  $1/N$. This happens because the reduction from $\{0,\dots,M-1\}$ to $\{0,\dots,N-1\}$ causes each value in $\{0,\dots,N-1\}$ to correspond to $\lfloor \frac{M}{N} \rfloor + 1$ values from the original range $\{0,\dots,M-1\}$.
 
-A simple julia code to construct universal hash function $h$:
+Here's a simple Julia code to construct universal hash function $h$:
 
 @@graybox
 ```
