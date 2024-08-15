@@ -5,9 +5,11 @@
 ### Universal hash functions
 The definition of universal hash function is as follows:
 
----
-A family of hash functions $\mathcal H$ mapping to a set of keys $U$ to a range of integers $\{0,1,\dots,M-1\}$ is called *universal* if any two distinct keys $x,y\in U$ the probability that a randomly chosen hash function $h$ from $\mathcal H$ maps $x$ and $y$ to the same value is at most $\frac{1}{M}$: $$\underset{h\in \mathcal H}{\mathbb P}\left[h(x)=h(y)\right]\leq \frac{1}{M}$$
----
+@@graybox
+ A family of hash functions $\mathcal H$ mapping to a set of keys $U$ to a range of integers $\{0,1,\dots,M-1\}$ is called __*universal*__ if any two distinct keys $x,y\in U$ the probability that a randomly chosen hash function $h$ from $\mathcal H$ maps $x$ and $y$ to the same value is at most $\frac{1}{M}$: 
+ $$\underset{h\in \mathcal H}{\mathbb P}\left[h(x)=h(y)\right]\leq \frac{1}{M}$$
+ @@
+
 
 Ok, how to construct one from such a family? It's actually pretty straight-forward (see proof [here](https://www.cs.cmu.edu/~avrim/451f11/lectures/lect1004.pdf) by Arvim Blum). We just need to:
 * Fix a prime number $M$ 
@@ -25,6 +27,7 @@ Now the collision probability goes up from $1/M$ to  $1/N$. Loosely speaking, th
 
 A simple julia code to construct universal hash function $h$:
 
+@@graybox
 ```
 using Primes
 # K: dimension for the items in the universe
@@ -37,3 +40,4 @@ function create_universal_hash(K::Int, M::Int; N = 1)
     return h
 end
 ```
+@@
