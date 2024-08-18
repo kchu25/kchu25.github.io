@@ -1,18 +1,18 @@
 @def title = "Universal hash functions"
 @def published = "15 August 2024"
-@def tags = ["probabilistic-data-structures", "julia"]
+@def tags = ["probabilistic-data-structures", "Julia"]
 
 ### Universal hash functions
 The definition of *universal hash function* is as follows:
 
 @@graybox
-A family of hash functions $\mathcal H=\{h:U\rightarrow V\}$ is called __*universal*__ if for for any two distinct element $x,y\in U$, the probability that a randomly chosen hash function $h\in\mathcal H$ that maps $x$ and $y$ to the same value is at most $\frac{1}{|V|}$. Formally, $\mathcal H$ is universal if:
+A family of hash functions $\mathcal H=\{h:U\rightarrow V\}$ is called __*universal*__ if for any two distinct element $x,y\in U$, the probability that a randomly chosen hash function $h\in\mathcal H$ that maps $x$ and $y$ to the same value is at most $\frac{1}{|V|}$. Formally, $\mathcal H$ is universal if:
  $$\underset{h\in \mathcal H}{\mathbb P}\left[h(x)=h(y)\right]\leq \frac{1}{|V|}$$
 for all $x\neq y$. Here, the probability is taken over the uniform distribution of $h$ from $\mathcal H$.
 @@
 
 
-We focus on the set $V=\{0,1,\dots,M-1\}$ as a set of integers. Constructing a universal hash function from a family of such functions is straightforward. Here's a way to do it:
+We focus on $\mathcal H$ whose range $V=\{0,1,\dots,M-1\}$ as a set of integers. Constructing a universal hash function from such a family of functions is straightforward. Here's a way to do it:
 * Fix a prime number $M$ 
 * Assume that the keys in the universe can be encoded as vectors of positive integers $(x_1,x_2,\dots,x_k)$
 * Uniformly choose numbers $r_1,r_2,\dots,r_k$ from the set $\{0,1,\dots,M-1\}$
