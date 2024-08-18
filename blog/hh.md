@@ -1,6 +1,6 @@
 @def title = "Tracking the frequently occurring elements with count-min sketch"
-@def published = "16 August 2024"
-@def tags = ["probabilistic-data-structures", "Julia"]
+@def published = "18 August 2024"
+@def tags = ["probabilistic-data-structures"]
 
 # Tracking the frequently occurring elements with count-min sketch
 
