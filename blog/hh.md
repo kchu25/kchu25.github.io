@@ -27,7 +27,7 @@ $$
 $$
 @@
 
-This results states that, for a given item $i$, one of the K entries (i.e. $C[1,h_1(i)],\dots,C[K,h_K(i)]$) in the count table $C$  __*reasonably approximate its count in the data stream with high probability*__. Specifically, this entry is the one with the minimum count among different groups. This result is significant because the __*space complexity is now fixed*__! That is, we only need the space to store the size of the count table, which requires $\mathcal O(KL)$. Even though the count table entry (i.e. the minimum of the entries $C[k,h_k(i)]$ for $k=1,\dots,K$) may overestimate the real count $\text{Count}(i,T)$, this overestimation is bounded. In particular, each count estimate is bounded by $\epsilon\sum_{t=1}^T s_t$, which is a fraction of the total size of the items observed so far.
+This results states that, for a given item $i$, one of the K entries (i.e. $C[1,h_1(i)],\dots,C[K,h_K(i)]$) in the count table $C$  __*reasonably approximate its count in the data stream with high probability*__. Specifically, this entry is the one with the minimum count among different groups. This result is significant because the __*space complexity is now fixed*__ -- we only need the space to store the size of the count table, which is $\mathcal O(KL)$. Even though the count table entry (i.e. the minimum of the entries $C[k,h_k(i)]$ for $k=1,\dots,K$) may overestimate the real count $\text{Count}(i,T)$, this overestimation is bounded. In particular, each count estimate is bounded by $\epsilon\sum_{t=1}^T s_t$, which is a fraction of the total size of the items observed so far.
 
 We also have the following result:
 @@graybox
