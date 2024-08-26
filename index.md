@@ -5,7 +5,7 @@
 
 I am a post-doctoral research scientist at Columbia University, collaborating with [Chaolin Zhang](https://systemsbiology.columbia.edu/faculty/chaolin-zhang) and other wonderful members in the [Zhang Lab](https://zhanglab.c2b2.columbia.edu/). Previously, I earned my Ph.D. in computer science at Washington University in St. Louis under the mentorship of [Gary Stormo](https://en.wikipedia.org/wiki/Gary_Stormo). My current research focuses on developing computational methods for analyzing protein-DNA/RNA interactions.
 
-A central theme in my research is to consider what representation is suited for DNA sequences that give the most helpful information. Traditionally, there are k-mers, position-weight-matrices, parametric statistical models like HMMs, and, more recently, deep neural networks. I am particularly interested in sparse representations, a rich framework that allows us to build techniques to answer challenging inferential questions in regulatory genomics.
+A central theme in my research is to consider what representation is suited for DNA sequences that give the most helpful information. Traditionally, there are k-mers, position-weight-matrices, parametric statistical models like HMMs, and more recently, deep neural networks. I am particularly interested in sparse representations, a rich framework that allows us to build techniques to answer challenging inferential questions in regulatory genomics.
 
 For example, in regulatory genomics, we want to infer the following:
 
