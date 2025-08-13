@@ -6,7 +6,7 @@ I was a professional ballet dancer with [Ballet West](https://www.balletwest.org
 
 - Performed nearly every role in *The Nutcracker*.
     - Believe it or not, I was the Nutcracker, and [Nathan Chen](https://en.wikipedia.org/wiki/Nathan_Chen) was my Fritz in Ballet West's production.
-- Won the Capezio Award at the 2010 USA International Ballet Competition (USA), under the name Guixien Chu. 
+- Won the Capezio Award at the 2010 USA International Ballet Competition (Jackson), under the name Guixien Chu. 
 - Got eliminated in the first round at the 2010 Varna International Ballet Competition. 
     - My friend [Avetik Karapetyan](https://www.youtube.com/@avcarvest) did great, though!
     - Roommate was [Brooklyn Mack](https://en.wikipedia.org/wiki/Brooklyn_Mack).
