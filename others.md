@@ -5,7 +5,7 @@
 I was a professional ballet dancer with [Ballet West](https://www.balletwest.org/),[Zurich Ballet](https://www.opernhaus.ch/en/), [New Jersey Ballet](https://www.njballet.org/), and [Kaohsiung City Ballet](https://www.kcb.org.tw/). I have extensive knowledge of the culture, career paths, artistry, and athleticism involved in both classical ballet and contemporary dance. My artistic view is strongly influenced by [Igal Perry](https://www.peridance.com/facprofile.cfm?FID=1&name=Igal%20Perry%20_//%20Artistic%20Director), artistic director of [Peridance Center](https://www.peridance.com/). Some of my career highlights include
 
 - Performed nearly every role in *The Nutcracker*.
-    - Believe or not, I was the Nutcracker, and [Nathan Chen](https://en.wikipedia.org/wiki/Nathan_Chen) was my Fritz in Ballet West's production.
+    - Believe it or not, I was the Nutcracker, and [Nathan Chen](https://en.wikipedia.org/wiki/Nathan_Chen) was my Fritz in Ballet West's production.
 - Won the Capezio Award at the 2010 USA International Ballet Competition (USA), under the name Guixien Chu. 
 - Got eliminated in the first round at the 2010 Varna International Ballet Competition. 
     - My friend [Avetik Karapetyan](https://www.youtube.com/@avcarvest) did great, though!
