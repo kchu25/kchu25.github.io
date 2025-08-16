@@ -23,7 +23,7 @@ If you or your children are interested in ballet, I’d be happy to share my exp
 
 ----- 
 ~~~
-<span style="color:grey">
+<span style="color:grey"; font-size:smaller">
 Acknowledgement: I am fortunate to have launched my career at Zurich Ballet through the help of 
 <a style="color:grey" href="https://www.artwave.tw/">Tzer-Shing Wang and Tzong-Yi Shieh</a>, and I am grateful to 
 <a style="color:grey" href="https://www.kcb.org.tw/about.php?id=23">張秀如</a> for the opportunity to dance with 
