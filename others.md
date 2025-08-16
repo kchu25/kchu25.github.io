@@ -22,9 +22,11 @@ I was a professional ballet dancer with [Ballet West](https://www.balletwest.org
 If you or your children are interested in ballet, I’d be happy to share my experience.
 
 ----- 
+~~~
 <span style="color:grey">
 Acknowledgement: I am fortunate to have launched my career at Zurich Ballet through the help of 
 <a href="https://www.artwave.tw/">Tzer-Shing Wang and Tzong-Yi Shieh</a>, and I am grateful to 
 <a href="https://www.kcb.org.tw/about.php?id=23">張秀如</a> for the opportunity to dance with 
 <a href="https://www.kcb.org.tw/">KCB</a>.
 </span>
+~~~
