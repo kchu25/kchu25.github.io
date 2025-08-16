@@ -15,7 +15,7 @@ I was a professional ballet dancer with [Ballet West](https://www.balletwest.org
 - Finalist at the 2007 Seoul International Dance Competition.
 - Completed high school at [Taipei National University of the Arts](https://w3.tnua.edu.tw/)
     - Many of my friends went on to dance at [Cloud Gate Theatre of Taiwan](https://www.cloudgate.org.tw/en/cg).
-- Quarterfinalist at the 2004 Prix de Lausanne (inclined/raked stage --- ouch!).
+- Quarterfinalist at the 2004 Prix de Lausanne (inclined/raked stage, ouch!).
     - [Alex Wong](https://www.imdb.com/name/nm3940692/) won the competition that year.
 
 
