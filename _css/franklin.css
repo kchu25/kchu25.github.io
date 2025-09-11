@@ -370,10 +370,18 @@ body { counter-reset: eqnum;
 ================================================================== */
 
 code {
-  background-color: var(--block-background);
+  background-color: var(--block-background);  
+  padding: 0.1em 0.1em;
+  border-radius: 1px;
+  font-size: var(--small);
+}
+
+
+pre code.language-julia {
+  background-color: var(--block-background);  
   padding: 0.1em 0.2em;
   border-radius: 2px;
-  font-size: var(--small);
+  font-size: 0.8em;
 }
 
 /* .franklin-content code { */
