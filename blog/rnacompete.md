@@ -1,9 +1,9 @@
-@def title = "Download and process the RNAcompete data"
+@def title = "Download and process RNAcompete data"
 @def published = "10 September 2025"
 @def tags = ["computational-biology", "bioinformatics"]
 
 
-## Download and process the RNAcompete data
+## Download and process RNAcompete data
 
 The RNAcompete data is located at NCBI: 
 
