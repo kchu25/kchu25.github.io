@@ -1,0 +1,72 @@
+<!doctype html> <html lang=en > <meta charset=UTF-8 > <meta name=viewport  content="width=device-width, initial-scale=1"> <link rel=stylesheet  href="/libs/highlight/styles/github.min.css"> <link rel=stylesheet  href="/css/franklin.css"> <link rel=stylesheet  href="/css/hypertext.css"> <link rel=icon  href="/assets/favicon.png"> <title>Download and process the RNAcompete data</title> <header> <h1 style="color:#283747">Shane Chu</h1> <nav> <a href="/" class=current >About</a> | <a href="/research">Research</a> | <a href="/blog">Notes</a> | <a href="/tags/">Tags</a> | <a href="/Shane_CV.pdf">CV</a> | <a href="/others">Others</a> <hr/> </nav> </header> <div class=franklin-content ><h2 id=download_and_process_the_rnacompete_data ><a href="#download_and_process_the_rnacompete_data" class=header-anchor >Download and process the RNAcompete data</a></h2> <p>The RNAcompete data is located at NCBI: </p> <ul> <li><p><a href="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc&#61;GSE41235">https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc&#61;GSE41235</a></p> </ul> <p>To process RNAcompete data, we will use the <a href="https://ftp.ncbi.nlm.nih.gov/geo/series/GSE41nnn/GSE41235/miniml/">family of files</a> formatted in <a href="https://www.ncbi.nlm.nih.gov/geo/info/MINiML.html">MINiML</a>. Throughout this we&#39;ll use the Julia programming language.</p> <p>By inspecting the files in this family, we can make a few observations:</p> <ul> <li><p>The file <code>GSE41235_family.xml</code> contains the metadata of the GEO MINiML dataset for the RNAcompete experiments.</p> <li><p>The file <code>GPL16119-tbl-1.txt</code> contains tab-delimited probe information, including sequences and their corresponding identifiers.</p> <ul> <li><p>Each sequence is assigned with an identifier in the form <code>RBD_v3_xxxxxx</code>.</p> </ul> <li><p>The files <code>GSM1011563-tbl-1.txt</code>, ..., <code>GSM1138966-tbl-1.txt</code> &#40;244 of them&#41; are the binding affinity measurements for each of the RNA binding protein &#40;RBP&#41;.</p> <ul> <li><p>Each RBP is assigned with an identifier in the form <code>GSMxxxxxxx</code>.</p> <li><p>Each <code>GSMxxxxxxx-tbl-1.txt</code> contain a list of affinity measurement quantities, with each quantity corresponding to a sequence identifier.</p> </ul> </ul> <p>Hence we can roughly see that there are three things to do to process this data:</p> <ol> <li><p>Map the correspondence between RBP identifiers and RBP names by creating a list of tuples <code>&#40;GSMxxxxx, RBP name&#41;</code>.</p> <li><p>Map the correspondence between sequence identifiers and sequences by creating a list of tuples <code>&#40;RBD_vc_xxxxxx, sequence&#41;</code>.</p> <li><p>Create a matrix where rows correspond to different sequences and columns correspond to different RBPs.</p> </ol> <p><hr /> Let&#39;s start with the first part. The goal here is to create a dictionary where the key–value pairs are of the form <code>&#40;RBP-idenfiers, RBP&#41;</code>. The following code works on the <code>GSE41235_family.xml</code> to accomplish this. End result is a dict called <code>dict_rbp</code>.</p> <pre><code class="julia hljs"><span class=hljs-keyword >using</span> EzXML
+<span class=hljs-keyword >using</span> DataFrames
+<span class=hljs-comment ># Correct way to read XML from file</span>
+doc = EzXML.readxml(<span class=hljs-string >&quot;GSE41235_family.xml&quot;</span>)  <span class=hljs-comment ># This is the correct function</span>
+root_ = doc.root
+
+<span class=hljs-comment ># Prints the name of the root XML element</span>
+println(<span class=hljs-string >&quot;Root element: &quot;</span>, root_.name)
+<span class=hljs-comment ># Counts and prints how many direct child elements the root has</span>
+println(<span class=hljs-string >&quot;Number of child elements: &quot;</span>, length(elements(root_)))
+<span class=hljs-comment ># Uses XPath to find ALL elements in the entire XML document </span>
+all_elements = EzXML.findall(<span class=hljs-string >&quot;//*&quot;</span>, root_)  <span class=hljs-comment ># XPath first, then element</span>
+<span class=hljs-comment ># Creates an array of all element names from the document and removes duplicates</span>
+[elem.name <span class=hljs-keyword >for</span> elem <span class=hljs-keyword >in</span> all_elements] |&gt; unique
+
+<span class=hljs-comment ># Creates a dictionary mapping &quot;x&quot; to the GEO MINiML XML namespace URL.</span>
+ns = <span class=hljs-built_in >Dict</span>(<span class=hljs-string >&quot;x&quot;</span> =&gt; <span class=hljs-string >&quot;http://www.ncbi.nlm.nih.gov/geo/info/MINiML&quot;</span>)
+<span class=hljs-comment ># Finds all Sample elements in the XML document using the defined namespace.</span>
+samples = EzXML.findall(<span class=hljs-string >&quot;//x:Sample&quot;</span>, root_, ns)
+<span class=hljs-comment >#  Initializes an empty array to store the extracted accession and RBP data pairs.</span>
+accession_and_rbp = []
+
+<span class=hljs-keyword >for</span> s <span class=hljs-keyword >in</span> samples
+    <span class=hljs-comment ># Finds all child elements within the current sample element.</span>
+    all_elems_under_sample = EzXML.findall(<span class=hljs-string >&quot;.//*&quot;</span>, s, ns)
+    <span class=hljs-comment ># Extracts the accession number from the 6th child element.</span>
+    accession = nodecontent(all_elems_under_sample[<span class=hljs-number >6</span>])
+    <span class=hljs-comment ># Extracts and strips whitespace from the RBP name in the 14th child element.</span>
+    rbp = nodecontent(all_elems_under_sample[<span class=hljs-number >14</span>]) |&gt; strip
+    push!(accession_and_rbp, (accession=accession, rbp=rbp))
+<span class=hljs-keyword >end</span>
+
+
+df = DataFrame(accession_and_rbp) <span class=hljs-comment ># just for the view</span>
+dict_rbp = <span class=hljs-built_in >Dict</span>(i.accession =&gt; i.rbp <span class=hljs-keyword >for</span> i <span class=hljs-keyword >in</span> accession_and_rbp)</code></pre> <p>Next, we map the sequence identifiers to their corresponding sequences. The file <code>GPL16119-tbl-1.txt</code> contains several columns, ordered as follows:</p> <ol> <li><p><code>Unique probe identifier</code>,</p> <li><p><code>Array spot row number</code>,</p> <li><p><code>Array spot column number</code>,</p> <li><p><code>Unique probe identifier</code>,</p> <li><p><code>Spot type &#40;custom designed&#41;</code>,</p> <li><p><code>3&#39;- to 5&#39;- DNA sequence of microarray probe</code>,</p> <li><p><code>5&#39;- to 3&#39;- Sequence of RNA hybridized to micrarray probe</code>,</p> <li><p><code>Structure of RNA in bracket notation</code>,</p> <li><p><code>Mean free energy of RNA sequence</code></p> </ol> <p>From these, columns 1 and 7 are the ones we want to extract. The following code accomplishes this by building a dictionary, <code>dict_seq</code>, </p> <p>And therefore column 1 and 7 are the ones we want to extract. The following code will get the job done, to get the correspondence as a dict <code>dict_seq</code>, where each key–value pair has the form <code>&#40;Sequence-identifier, sequence&#41;</code>.</p> <pre><code class="julia hljs"><span class=hljs-keyword >using</span> CSV
+f = CSV.read(<span class=hljs-string >&quot;GPL16119-tbl-1.txt&quot;</span>, 
+    DataFrame; delim=&#x27;\t&#x27;, ignorerepeated=<span class=hljs-literal >true</span>, header=<span class=hljs-literal >false</span>)
+
+dict_seq = <span class=hljs-built_in >Dict</span>(i =&gt; j <span class=hljs-keyword >for</span> (i, j) <span class=hljs-keyword >in</span> 
+    zip(f.Column1, f.Column7))</code></pre> <p>Next, we map the affinities of each RBP to their corresponding sequences and store the results in a matrix. This is done as follows:</p> <pre><code class="julia hljs"><span class=hljs-comment ># Initializes a 2D array to hold affinity values, filled with NaN.</span>
+affinities = fill(<span class=hljs-literal >NaN</span>, (length(keys(dict_seq)), length(dict_rbp)))
+
+rbp_affinity_files = filter(x-&gt;startswith(x, <span class=hljs-string >&quot;GSM&quot;</span>), readdir(<span class=hljs-string >&quot;./&quot;</span>))
+
+<span class=hljs-keyword >for</span> (column_index, rbp_affinity_file) <span class=hljs-keyword >in</span> enumerate(rbp_affinity_files)
+
+    <span class=hljs-meta >@info</span> <span class=hljs-string >&quot;Processing column: <span class=hljs-variable >$column_index</span>&quot;</span>
+    <span class=hljs-comment ># read the affinity file    </span>
+    df = CSV.read(rbp_affinity_file, DataFrame; 
+        delim=&#x27;\t&#x27;, ignorerepeated=<span class=hljs-literal >true</span>, header=<span class=hljs-literal >false</span>, types=<span class=hljs-built_in >String</span>)  
+    <span class=hljs-comment ># Forces all columns to be read as strings</span>
+    <span class=hljs-comment ># make the dict of sequence identifier to affinity</span>
+    dict_affinity = <span class=hljs-built_in >Dict</span>(
+        i =&gt; ismissing(j) || j==<span class=hljs-string >&quot;null&quot;</span> ? <span class=hljs-literal >NaN</span> : parse(<span class=hljs-built_in >Float64</span>, <span class=hljs-built_in >String</span>(j)) 
+        <span class=hljs-keyword >for</span> (i, j) <span class=hljs-keyword >in</span> zip(df.Column1, df.Column2))
+    <span class=hljs-comment ># get the file&#x27;s RBP identifier</span>
+    rbp_identifier = split(rbp_affinity_file, <span class=hljs-string >&quot;-&quot;</span>)[<span class=hljs-number >1</span>]
+
+    <span class=hljs-comment ># loop through each of the sequence</span>
+    <span class=hljs-keyword >for</span> (row_index, seq_identifier) <span class=hljs-keyword >in</span> enumerate(keys(dict_seq))
+        <span class=hljs-comment ># get the affinity</span>
+        affinities[row_index, column_index] = 
+            get(dict_affinity, seq_identifier, <span class=hljs-literal >NaN</span>) <span class=hljs-comment ># if not found, return NaN  </span>
+    <span class=hljs-keyword >end</span>
+<span class=hljs-keyword >end</span></code></pre> <p>Finally, we create ordered arrays for the RBP names and sequences, corresponding to the matrix columns and rows:</p> <pre><code class="julia hljs"><span class=hljs-comment ># Extract RBP identifiers from filenames</span>
+rbp_identifiers = split.(rbp_affinity_files, <span class=hljs-string >&quot;-&quot;</span>) .|&gt; first
+
+<span class=hljs-comment ># Get RBP names in the same order as the matrix columns</span>
+rbps = [dict_rbp[i] <span class=hljs-keyword >for</span> i <span class=hljs-keyword >in</span> rbp_identifiers]
+
+<span class=hljs-comment ># Get sequences in the same order as the matrix rows</span>
+seqs = [dict_seq[i] <span class=hljs-keyword >for</span> i <span class=hljs-keyword >in</span> keys(dict_seq)]</code></pre> <p>This creates three aligned data structures:</p> <ul> <li><p><code>affinities</code>: A matrix where <code>affinities&#91;i,j&#93;</code> contains the binding affinity of sequence <code>i</code> to RBP <code>j</code></p> <li><p><code>seqs</code>: An array where <code>seqs&#91;i&#93;</code> contains the RNA sequence corresponding to matrix row <code>i</code></p> <li><p><code>rbps</code>: An array where <code>rbps&#91;j&#93;</code> contains the RBP name corresponding to matrix column <code>j</code></p> </ul> <p>The result is a complete dataset ready for downstream analysis, with all binding affinity measurements organized in a structured matrix format alongside the corresponding sequence and protein annotations.</p> <p>Caveats:</p> <ul> <li><p>Not all RNA sequences are of the same length, so further processing may be required.</p> <li><p>Some values are missing; these have been filled in as NaNs in the affinity matrix.</p> </ul> <div class=page-foot > Contact me by <a href="mailto:sc5502@cumc.columbia.edu">E-mail</a> | <a href="https://github.com/kchu25">Github</a> | <a href="https://www.linkedin.com/in/kchu1/">Linkedin</a> <br> This work is licensed under <a href="http://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>. Last modified: September 11, 2025. <br> Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia language</a>. </div> </div> <script src="/libs/highlight/highlight.min.js"></script> <script>hljs.highlightAll();hljs.configure({tabReplace: ' '});</script>
