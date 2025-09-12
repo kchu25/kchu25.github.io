@@ -83,7 +83,7 @@ Next, we map the sequence identifiers to their corresponding sequences. The file
 1. `Structure of RNA in bracket notation`,
 1. `Mean free energy of RNA sequence`
 
-And therefore column 1 and 7 are the ones we want to extract. The following code will get the job done, to get the correspondence as a dict `dict_seq`, where each key–value pair has the form `(Sequence-identifier, sequence)`.
+And therefore we can see column 1 and 7 are the ones we want to extract. The following code will get the job done, to get the correspondence as a dict `dict_seq`, where each key–value pair has the form `(Sequence-identifier, sequence)`.
 ```
 using CSV
 f = CSV.read("GPL16119-tbl-1.txt", 
