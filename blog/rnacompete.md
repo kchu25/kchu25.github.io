@@ -15,7 +15,7 @@ $$
     a_{n1} & a_{n2} & \cdots & a_{nm}
     \end{pmatrix}
 $$
-where each component $a_{ij}$ ​records a quantitative measure (the binding affinity) of how strongly the $i$-th RNA sequence binds to the $j$-th RBP. In my opinion, this setup is incredibly powerful, because it naturally allows us to model the binding sites as a *regression* problem (i.e. supervised learning). The throughput, i.e. the large number of sequences (rows), is also very important because it allows the model to learn from a diverse range of failures. 
+where each component $a_{ij}$ ​records a quantitative measure (the binding affinity) of how strongly the $i$-th RNA sequence binds to the $j$-th RBP. In my opinion, this setup is incredibly powerful, because it naturally allows us to model the binding sites as a *regression* problem (i.e. supervised learning). The throughput, i.e. the large number of sequences (rows), is also very important because it allows the model to learn from a diverse range of successes and failures. 
 
 While slightly dated compared to many of today’s hot topics in genomics, I think it’s still worth taking a closer look at how to work with this kind of data.
 
