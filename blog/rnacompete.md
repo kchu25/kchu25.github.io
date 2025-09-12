@@ -120,8 +120,8 @@ for (column_index, rbp_affinity_file) in enumerate(rbp_affinity_files)
     # read the affinity file    
     df = CSV.read(rbp_affinity_file, DataFrame; 
         delim='\t', ignorerepeated=true, header=false, types=String)  
-    # Forces all columns to be read as strings
-    # make the dict of sequence identifier to affinity
+    # forces all columns to be read as strings
+    # make a dict of sequence identifier to affinity
     dict_affinity = Dict(
         i => ismissing(j) || j=="null" ? NaN : parse(Float64, String(j)) 
         for (i, j) in zip(df.Column1, df.Column2))
