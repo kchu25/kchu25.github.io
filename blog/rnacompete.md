@@ -48,18 +48,8 @@ End result is a dict called `dict_rbp`.
 using EzXML
 using DataFrames
 # Correct way to read XML from file
-doc = EzXML.readxml("GSE41235_family.xml")  # This is the correct function
+doc = EzXML.readxml("GSE41235_family.xml") 
 root_ = doc.root
-
-# Prints the name of the root XML element
-println("Root element: ", root_.name)
-# Counts and prints how many direct child elements the root has
-println("Number of child elements: ", length(elements(root_)))
-# Uses XPath to find ALL elements in the entire XML document 
-all_elements = EzXML.findall("//*", root_)  # XPath first, then element
-# Creates an array of all element names from the document and removes duplicates
-[elem.name for elem in all_elements] |> unique
-
 # Creates a dictionary mapping "x" to the GEO MINiML XML namespace URL.
 ns = Dict("x" => "http://www.ncbi.nlm.nih.gov/geo/info/MINiML")
 # Finds all Sample elements in the XML document using the defined namespace.
@@ -93,8 +83,6 @@ Next, we map the sequence identifiers to their corresponding sequences. The file
 1. `5'- to 3'- Sequence of RNA hybridized to micrarray probe`,
 1. `Structure of RNA in bracket notation`,
 1. `Mean free energy of RNA sequence`
-
-From these, columns 1 and 7 are the ones we want to extract. The following code accomplishes this by building a dictionary, `dict_seq`, 
 
 And therefore column 1 and 7 are the ones we want to extract. The following code will get the job done, to get the correspondence as a dict `dict_seq`, where each key–value pair has the form `(Sequence-identifier, sequence)`.
 ```
