@@ -5,6 +5,22 @@
 
 ## Download and process RNAcompete data
 
+### Why do we care?
+RNAcompete, or the "RNA version of Protein Binding Microarrays," is a high-throughput method to measure the binding affinity of RNA-binding proteins (RBPs). Its data can be intuitively understood as a matrix:
+$$
+    \Abm = \begin{pmatrix} 
+    a_{11} & a_{12} & \cdots & a_{1m} \\ 
+    a_{21} & a_{22} & \cdots & a_{2m} \\
+    \vdots & \vdots & \ddots & \vdots \\
+    a_{n1} & a_{n2} & \cdots & a_{nm}
+    \end{pmatrix}
+$$
+where each component $a_{ij}$ ​records a quantitative measure (the binding affinity) of how strongly the $i$-th RNA sequence binds to the $j$-th RBP. In my opinion, this setup is incredibly powerful, because it naturally allows us to model the binding sites as a *regression* problem (i.e., supervised learning).
+
+While slightly dated compared to many of today’s hot topics in genomics, I think it’s still worth taking a closer look at how to work with this kind of data.
+
+### Let's do this
+
 The RNAcompete data is located at NCBI: 
 
 - [https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE41235](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE41235)
@@ -15,7 +31,7 @@ By inspecting the files in this family, we can make a few observations:
 - The file `GSE41235_family.xml` contains the metadata of the GEO MINiML dataset for the RNAcompete experiments.
 - The file `GPL16119-tbl-1.txt` contains tab-delimited probe information, including sequences and their corresponding identifiers.
     - Each sequence is assigned with an identifier in the form `RBD_v3_xxxxxx`.
-- The files `GSM1011563-tbl-1.txt`, ..., `GSM1138966-tbl-1.txt` (244 of them) are the binding affinity measurements for each of the RNA binding protein (RBP).
+- The files `GSM1011563-tbl-1.txt`, ..., `GSM1138966-tbl-1.txt` (244 of them) are the binding affinity measurements for each of the RBP.
     - Each RBP is assigned with an identifier in the form `GSMxxxxxxx`.
     - Each `GSMxxxxxxx-tbl-1.txt` contain a list of affinity measurement quantities, with each quantity corresponding to a sequence identifier.
 
@@ -144,3 +160,8 @@ The result is a complete dataset ready for downstream analysis, with all binding
 Caveats:
 - Not all RNA sequences are of the same length, so further processing may be required.
 - Some values are missing; these have been filled in as NaNs in the affinity matrix.
+
+
+#### References
+
+{{show_refs ray2017rnacompete}}
