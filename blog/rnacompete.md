@@ -8,7 +8,7 @@
 ### Why do we care?
 RNAcompete, or the "RNA version of Protein Binding Microarrays," is a high-throughput method to measure the binding affinity of RNA-binding proteins (RBPs). Its data can be intuitively understood as a matrix:
 $$
-    \Abm = \begin{pmatrix} 
+    \begin{pmatrix} 
     a_{11} & a_{12} & \cdots & a_{1m} \\ 
     a_{21} & a_{22} & \cdots & a_{2m} \\
     \vdots & \vdots & \ddots & \vdots \\
@@ -71,7 +71,6 @@ end
 df = DataFrame(accession_and_rbp) # just for the view
 dict_rbp = Dict(i.accession => i.rbp for i in accession_and_rbp)
 ````
-
 
 Next, we map the sequence identifiers to their corresponding sequences. The file `GPL16119-tbl-1.txt` contains several columns, ordered as follows:
 1. `Unique probe identifier`,
