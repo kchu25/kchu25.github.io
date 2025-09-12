@@ -1,5 +1,5 @@
 @def title = "Download and process RNAcompete data"
-@def published = "10 September 2025"
+@def published = "11 September 2025"
 @def tags = ["computational-biology", "bioinformatics"]
 
 
