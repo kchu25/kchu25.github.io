@@ -48,8 +48,8 @@ rbp_affinity_files = filter(x-&gt;startswith(x, <span class=hljs-string >&quot;G
     <span class=hljs-comment ># read the affinity file    </span>
     df = CSV.read(rbp_affinity_file, DataFrame; 
         delim=&#x27;\t&#x27;, ignorerepeated=<span class=hljs-literal >true</span>, header=<span class=hljs-literal >false</span>, types=<span class=hljs-built_in >String</span>)  
-    <span class=hljs-comment ># Forces all columns to be read as strings</span>
-    <span class=hljs-comment ># make the dict of sequence identifier to affinity</span>
+    <span class=hljs-comment ># forces all columns to be read as strings</span>
+    <span class=hljs-comment ># make a dict of sequence identifier to affinity</span>
     dict_affinity = <span class=hljs-built_in >Dict</span>(
         i =&gt; ismissing(j) || j==<span class=hljs-string >&quot;null&quot;</span> ? <span class=hljs-literal >NaN</span> : parse(<span class=hljs-built_in >Float64</span>, <span class=hljs-built_in >String</span>(j)) 
         <span class=hljs-keyword >for</span> (i, j) <span class=hljs-keyword >in</span> zip(df.Column1, df.Column2))
