@@ -43,9 +43,7 @@ rbp_affinity_files = filter(x-&gt;startswith(x, <span class=hljs-string >&quot;G
     dict_affinity = <span class=hljs-built_in >Dict</span>(
         i =&gt; ismissing(j) || j==<span class=hljs-string >&quot;null&quot;</span> ? <span class=hljs-literal >NaN</span> : parse(<span class=hljs-built_in >Float64</span>, <span class=hljs-built_in >String</span>(j)) 
         <span class=hljs-keyword >for</span> (i, j) <span class=hljs-keyword >in</span> zip(df.Column1, df.Column2))
-    <span class=hljs-comment ># get the file&#x27;s RBP identifier</span>
-    rbp_identifier = split(rbp_affinity_file, <span class=hljs-string >&quot;-&quot;</span>)[<span class=hljs-number >1</span>]
-
+        
     <span class=hljs-comment ># loop through each of the sequence</span>
     <span class=hljs-keyword >for</span> (row_index, seq_identifier) <span class=hljs-keyword >in</span> enumerate(keys(dict_seq))
         <span class=hljs-comment ># get the affinity</span>
