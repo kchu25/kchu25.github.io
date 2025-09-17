@@ -112,9 +112,7 @@ for (column_index, rbp_affinity_file) in enumerate(rbp_affinity_files)
     dict_affinity = Dict(
         i => ismissing(j) || j=="null" ? NaN : parse(Float64, String(j)) 
         for (i, j) in zip(df.Column1, df.Column2))
-    # get the file's RBP identifier
-    rbp_identifier = split(rbp_affinity_file, "-")[1]
-
+        
     # loop through each of the sequence
     for (row_index, seq_identifier) in enumerate(keys(dict_seq))
         # get the affinity
