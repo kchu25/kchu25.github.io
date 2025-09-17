@@ -41,7 +41,7 @@ Hence we can roughly see that there are three things to do to process this data:
 3. Create a matrix where rows correspond to different sequences and columns correspond to different RBPs.
 
 ---
-Let's start with the first part. The goal here is to create a dictionary where the key–value pairs are of the form `(RBP-idenfiers, RBP)`. The following code works on the `GSE41235_family.xml` to accomplish this. 
+Let's start with the first part. The goal here is to create a dictionary where the key–value pairs are of the form `(RBP-identifiers, RBP)`. The following code works on the `GSE41235_family.xml` to accomplish this. 
 End result is a dict called `dict_rbp`.
 
 ````julia
