@@ -20,7 +20,7 @@ extract_features(data) = tuple(item.feature_index for item in data)
 ```
 The first function `extract_features(x::Vector{Int})` specializes. The second function is used for the more general "duck typing" case. This way, I do not have to make the dependency of another package -- I just have to assume the object has the required property `feature_index`. This is nice, as I now don't have to worry about the unnecessary coupling of different packages.
 
-### It's easier to code interaction behavior with multiple dispatch 
+### It's easier to code interaction behavior among objects with multiple dispatch 
 
 To consider the difference between single dispatch and multiple dispatch, consider Python which by default uses single dispatch. Here's an example with a `Car` class:
 
