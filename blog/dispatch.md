@@ -47,6 +47,6 @@ drive(car::Car, road::Road) = "driving normally"
 drive(car::SportsCar, road::RaceTrack) = "blazing past everyone"
 drive(car::Truck, road::IceRoad) = "steady with chains on"
 ```
-This localized behavior on the interactions among different objects makes the code much more manageable -- I don't have to look at each object's blueprint, which itself is a noisy process, e.g. navigating the subroutines, create another `elif`, etc. There's also the benefit of **seeing the big picture** -- the interactions can be concentrated altogether in a single code file. 
+This localized view on the interactions among different objects makes the code much more manageable -- I don't have to look at each object's blueprint, which itself is a noisy process, e.g. navigating the subroutines, create another `elif`, etc. In short, this localzied view gives the benefit of **seeing the big picture** on the code -- the interactions among similar objects can now be concentrated altogether in a single code file. 
 
 There are other benefits too -- like the **extensibility without modifying old code**. I can just define new methods for new types without touching anything that already works. And performance-wise, Julia compiles specialized versions for each type combination, so I avoid all the runtime type checking and branching that comes with traditional object-oriented approaches.
