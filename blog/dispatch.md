@@ -2,7 +2,7 @@
 @def published = "27 September 2025"
 @def tags = ["Julia"]
 
-## Julia's multple dispatch
+## Julia's multiple dispatch
 
 I've been using Julia for programming since graduate school, and most of the time I just "go with the flow" - never really thinking deeply about the reasons why I use Julia. It was perhaps only with a sense of nice syntax, speed, and a package management system that usually gave me much less headache compared to Python.
 
