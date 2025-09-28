@@ -6,11 +6,13 @@
 
 I've been programming in Julia since graduate school, and most of the time I just "go with the flow" - never really thinking deeply about the reasons why I use Julia. It was perhaps only with a sense of nice syntax, speed, and a package management system that usually gave me much less headache compared to Python.
 
-But recently I have more appreciation for multiple dispatch. When the codebase becomes large, naturally there will be certain behaviors that distinct groups of objects need to define. Combined with duck typing, this becomes quite powerful. For example, I can have a function that defines behavior for a primitive type and another function that defines behavior for my user-defined type. Sometimes the user-defined type resides in another package, and it can become messy and hard to maintain down the road if I want to add package dependencies to the current working package. The solution then is to define a function for the primitive type first, and let the duck typing approach specify what other packages require when they extend the behavior.
+But recently I have more appreciation for multiple dispatch. When the codebase becomes large, naturally there will be certain behaviors that distinct groups of objects need to define. Combined with duck typing, this becomes quite powerful. 
+
+For example, I can have a function that defines behavior for a primitive type and another function that defines behavior for my user-defined type. Sometimes the user-defined type resides in another package, and it can become messy and hard to maintain down the road if I want to add package dependencies to the current working package. The solution then is to define a function for the primitive type first, and let the duck typing approach specify what other packages require when they extend the behavior.
 
 ### Solution to my problem
 
-For example, I can design the interface in my base package:
+I can design the interface in my base package:
 ```julia
 # In my base package - no external dependencies
 extract_features(x::Vector{Int}) = tuple(x...)
