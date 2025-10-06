@@ -131,3 +131,127 @@ function hfun_show_refs(refs)
     write(out, "</ul>")
     return String(take!(out))
 end
+
+"""
+    {{citation_box}}
+
+Generate a citation box for the current blog post.
+"""
+function hfun_citation_box()
+    # Get page variables
+    title = locvar(:title)
+    authors = locvar(:authors)
+    published_date = locvar(:published)
+    citation_author = locvar(:citation_author)
+    citation_title = locvar(:citation_title)
+    
+    # Default values if not set
+    authors = isnothing(authors) ? ["Shane Chu"] : authors
+    citation_author = isnothing(citation_author) ? "Chu, Shane" : citation_author
+    citation_title = isnothing(citation_title) ? title : citation_title
+    
+    # Get current page URL
+    current_path = locvar(:fd_rpath)
+    base_url = globvar("website_url")
+    full_url = base_url * current_path
+    
+    # Parse date
+    if !isnothing(published_date)
+        date_obj = Date(published_date, dateformat"d U Y")
+        year = Dates.year(date_obj)
+        formatted_date = Dates.format(date_obj, dateformat"Y/m/d")
+    else
+        year = Dates.year(Dates.today())
+        formatted_date = Dates.format(Dates.today(), dateformat"Y/m/d")
+    end
+    
+    io = IOBuffer()
+    write(io, """<div class="citation-box">""")
+    write(io, """<h4>Citation</h4>""")
+    
+    # APA Style
+    write(io, """<p><strong>APA:</strong><br>""")
+    write(io, """$citation_author ($year). <em>$citation_title</em>. Shane Chu's Blog. <a href="$full_url">$full_url</a></p>""")
+    
+    # BibTeX
+    # Create a simple key from title
+    title_words = split(title)
+    key_words = title_words[1:min(3, length(title_words))]
+    bibtex_key = replace(lowercase(join(key_words, "")), " " => "")
+    bibtex_key = "chu$(year)$(bibtex_key)"
+    
+    write(io, """<p><strong>BibTeX:</strong></p>""")
+    write(io, """<pre><code>@misc{$bibtex_key,
+  author = {$(join(authors, " and "))},
+  title = {$title},
+  howpublished = {\\url{$full_url}},
+  year = {$year},
+  note = {Accessed: $(Dates.format(Dates.today(), dateformat"Y-m-d"))}
+}</code></pre>""")
+    
+    write(io, """</div>""")
+    return String(take!(io))
+end
+
+"""
+    {{citation_metadata}}
+
+Generate HTML meta tags for citation metadata (Dublin Core, Google Scholar, etc.)
+"""
+function hfun_citation_metadata()
+    title = locvar(:title)
+    authors = locvar(:authors)
+    published_date = locvar(:published)
+    doi = locvar(:doi)
+    
+    # Default values
+    authors = isnothing(authors) ? ["Shane Chu"] : authors
+    
+    # Get current page URL
+    current_path = locvar(:fd_rpath)
+    base_url = globvar("website_url")
+    full_url = base_url * current_path
+    
+    # Parse date
+    if !isnothing(published_date)
+        date_obj = Date(published_date, dateformat"d U Y")
+        iso_date = Dates.format(date_obj, dateformat"Y-m-d")
+    else
+        iso_date = Dates.format(Dates.today(), dateformat"Y-m-d")
+    end
+    
+    io = IOBuffer()
+    
+    # Dublin Core metadata
+    write(io, """<meta name="DC.Title" content="$title">""")
+    for author in authors
+        write(io, """<meta name="DC.Creator" content="$author">""")
+    end
+    write(io, """<meta name="DC.Date" content="$iso_date">""")
+    write(io, """<meta name="DC.Identifier" content="$full_url">""")
+    write(io, """<meta name="DC.Publisher" content="Shane Chu">""")
+    write(io, """<meta name="DC.Type" content="Text">""")
+    write(io, """<meta name="DC.Format" content="text/html">""")
+    
+    # Google Scholar metadata
+    write(io, """<meta name="citation_title" content="$title">""")
+    for author in authors
+        write(io, """<meta name="citation_author" content="$author">""")
+    end
+    write(io, """<meta name="citation_publication_date" content="$iso_date">""")
+    write(io, """<meta name="citation_journal_title" content="Shane Chu's Blog">""")
+    write(io, """<meta name="citation_publisher" content="Shane Chu">""")
+    
+    if !isnothing(doi) && !isempty(doi)
+        write(io, """<meta name="citation_doi" content="$doi">""")
+    end
+    
+    # Open Graph metadata for social sharing
+    write(io, """<meta property="og:title" content="$title">""")
+    write(io, """<meta property="og:type" content="article">""")
+    write(io, """<meta property="og:url" content="$full_url">""")
+    write(io, """<meta property="article:author" content="$(join(authors, ", "))">""")
+    write(io, """<meta property="article:published_time" content="$iso_date">""")
+    
+    return String(take!(io))
+end

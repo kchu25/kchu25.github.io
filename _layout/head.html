@@ -7,6 +7,9 @@
   {{if hascode}} {{insert head_highlight.html }}   {{end}}
   {{insert style.html}}
   {{isdef title}} <title>{{fill title}}</title>  {{end}}
+  
+  <!-- Citation metadata for blog posts -->
+  {{ispage blog/*}} {{citation_metadata}} {{end}}
 </head>
 <body>
 {{insert header.html}}

@@ -1,6 +1,13 @@
 @def title = "Tracking the frequently occurring elements with count-min sketch"
 @def published = "18 August 2024"
 @def tags = ["probabilistic-data-structures"]
+@def authors = ["Shane Chu"]
+@def doi = ""
+@def citation_title = "Tracking the frequently occurring elements with count-min sketch"
+@def citation_author = "Chu, Shane"
+@def citation_publication_date = "2024/08/18"
+@def citation_journal_title = "Shane Chu's Blog"
+@def citation_publisher = "Shane Chu"
 
 # Tracking the frequently occurring elements with count-min sketch
 
@@ -38,6 +45,12 @@ This results states that if we construct the count table $C$ in count-min sketch
 
  <!-- we require two parameters $\delta$ and $\epsilon$, which we will see how it relates to the gurantees of such approach shortly. Specifically, -->
 
+
+
 #### References
 
 {{show_refs randomalg }}
+
+---
+
+{{citation_box}}
