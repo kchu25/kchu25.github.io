@@ -1,4 +1,4 @@
-name: Build and Deploy Site (Clean Build)
+name: Build and Deploy Site
 
 on:
   push:
@@ -18,29 +18,24 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Setup Julia
+      - name: Setup Julia (DOWNGRADE TO 1.10)
         uses: julia-actions/setup-julia@v2
         with:
-          version: '1.10'
+          version: '1.10'  # THIS IS THE KEY FIX
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20'
 
-      - name: Clean Julia environment (NUCLEAR OPTION)
-        run: |
-          rm -rf ~/.julia/artifacts
-          rm -rf ~/.julia/compiled
-          rm -rf ~/.julia/packages
-          echo "🧹 Cleaned all Julia caches"
+      - name: Delete Manifest.toml (force regenerate)
+        run: rm -f Manifest.toml
 
-      - name: Install Julia dependencies from scratch
+      - name: Install Julia dependencies
         run: |
           julia --project=. -e '
             using Pkg
             Pkg.instantiate()
-            Pkg.resolve()
             Pkg.precompile()
             println("\n=== Package Status ===")
             Pkg.status()
