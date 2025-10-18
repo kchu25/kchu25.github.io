@@ -4,13 +4,14 @@
 @@clear @@
 @@img-me-small ![Proguard](./me.jpg) @@
 
-I am a post-doctoral research scientist at Columbia University, collaborating with [Chaolin Zhang](https://systemsbiology.columbia.edu/faculty/chaolin-zhang) and other wonderful members in the [Zhang Lab](https://zhanglab.c2b2.columbia.edu/). Previously, I earned my Ph.D. in computer science at Washington University in St. Louis under the mentorship of [Gary Stormo](https://en.wikipedia.org/wiki/Gary_Stormo). My current research focuses on deep learning interpretations, demonstrated through applications involving high-throughput functional genomics/proteomics screenings.
-
-
-My path to deep learning interpretation was motivated by the fact that most deep learning applications in genomics and proteomics involve *sequence-to-label* problems, such as:
+I am a post-doctoral research scientist at Columbia University, collaborating with [Chaolin Zhang](https://systemsbiology.columbia.edu/faculty/chaolin-zhang) in the [Zhang Lab](https://zhanglab.c2b2.columbia.edu/). I earned my Ph.D. in computer science at Washington University in St. Louis under [Gary Stormo](https://en.wikipedia.org/wiki/Gary_Stormo). My research focuses on deep learning interpretations applied to high-throughput functional genomics and proteomics.
 @@spacing @@
+
+
+Most applications in genomics and proteomics involve *sequence-to-label* problems, such as:
+
 ~~~
-<figure style="float: right; margin-right: 5px; width: 354px; margin-left: 5px;  border: 1px solid black"">
+<figure style="float: right; margin-right: 6px; width: 327px; margin-left: 5px;  border: 1px solid black"">
   <img src="./seq2label.png" alt="Sequence to label" style="width: 95%; margin-left: -25px;">
   <figcaption style="font-style: italic; color: gray; text-align: center; margin-top: 1px;">Which patterns matter?</figcaption>
 </figure>
@@ -25,7 +26,7 @@ My path to deep learning interpretation was motivated by the fact that most deep
 
 @@spacing @@
 
-The fundamental question underlying these problems is: which *patterns* drive the outcome? My [doctoral work](https://openscholarship.wustl.edu/cgi/viewcontent.cgi?article=2066&context=eng_etds) tackled exactly this challenge: developing methods to uncover patterns from deep learning models and quantify the rules that govern them. My subsequent work has revealed broader interpretability principles for scientific data, particularly when the learned features in deep learning models are neither edge detectors nor word embeddings.
+The fundamental question is: which *patterns* drive the outcome? My [doctoral work](https://openscholarship.wustl.edu/cgi/viewcontent.cgi?article=2066&context=eng_etds) tackled this challenge by developing methods to uncover patterns from deep learning models and quantify their governing rules. My subsequent work has revealed broader interpretability principles for scientific data, particularly when learned features are neither edge detectors nor word embeddings.
 
 ---
 
