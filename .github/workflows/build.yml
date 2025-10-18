@@ -33,7 +33,7 @@ jobs:
 
       - name: Install deps & ensure OpenSSL_jll
         run: |
-          julia --project=. -e 'using Pkg; Pkg.instantiate(); if !("OpenSSL_jll" in keys(Pkg.dependencies())); Pkg.add("OpenSSL_jll"); end; Pkg.build(); Pkg.precompile()'
+          julia --project=. -e 'using Pkg; Pkg.activate("."); try; Pkg.add("OpenSSL_jll"); catch; end; Pkg.instantiate(); Pkg.build(); Pkg.precompile(); println("=== Pkg.status() ==="); Pkg.status()'
 
       - name: Install highlight.js with npm
         run: npm install highlight.js --no-save
