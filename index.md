@@ -4,7 +4,8 @@
 @@clear @@
 @@img-me-small ![Proguard](./me.jpg) @@
 
-I am a post-doctoral research scientist at Columbia University, collaborating with [Chaolin Zhang](https://systemsbiology.columbia.edu/faculty/chaolin-zhang) in the [Zhang Lab](https://zhanglab.c2b2.columbia.edu/). I earned my Ph.D. in computer science at Washington University in St. Louis under [Gary Stormo](https://en.wikipedia.org/wiki/Gary_Stormo). My research focuses on deep learning interpretations applied to high-throughput functional genomics and proteomics.
+I am a post-doctoral research scientist at Columbia University, collaborating with [Chaolin Zhang](https://systemsbiology.columbia.edu/faculty/chaolin-zhang) in the [Zhang Lab](https://zhanglab.c2b2.columbia.edu/). I earned my Ph.D. in computer science at Washington University in St. Louis under [Gary Stormo](https://en.wikipedia.org/wiki/Gary_Stormo). My current research focuses on deep learning interpretations, demonstrated through applications involving high-throughput functional genomics/proteomics screenings.
+
 @@spacing @@
 
 
