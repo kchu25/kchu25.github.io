@@ -10,9 +10,9 @@ I am a post-doctoral research scientist at Columbia University, collaborating wi
 My path to deep learning interpretation was motivated by the fact that most deep learning applications in genomics and proteomics involve *sequence-to-label* problems, such as:
 @@spacing @@
 ~~~
-<figure style="float: right; margin-right: 10px; width: 317px;">
-  <img src="./seq2label.png" alt="Sequence to label" style="width: 100%;">
-  <figcaption style="font-style: italic; color: gray; text-align: center; margin-top: 10px;">Which patterns matter?</figcaption>
+<figure style="float: right; margin-right: 5px; width: 354px; margin-left: 5px;  border: 1px solid black"">
+  <img src="./seq2label.png" alt="Sequence to label" style="width: 95%; margin-left: -25px;">
+  <figcaption style="font-style: italic; color: gray; text-align: center; margin-top: 1px;">Which patterns matter?</figcaption>
 </figure>
 ~~~
 
