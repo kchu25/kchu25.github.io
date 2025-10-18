@@ -21,6 +21,35 @@ html {
   color: var(--text-color);
 }
 
+.small-list {
+  font-size: 0.915em;
+}
+
+.clear {
+  clear: both;
+}
+
+.spacing {
+  height: 1px;
+}
+
+.franklin-content .img-me-small img {
+    width: 18.5%;
+    text-align: center;
+    padding-right: 0%;
+    padding-left: 0%;
+    margin-left: 3.5%;
+    margin-right: 2.5%;
+    float: right;
+    border: 1px solid black;
+}
+
+
+/* 
+.img-me-small img {
+  width: 100%;
+  display: block;
+} */
 /* ==================================================================
     BASIC GRID FOR PROFILE PIC
 ================================================================== */
