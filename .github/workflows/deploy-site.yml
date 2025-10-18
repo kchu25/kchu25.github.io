@@ -18,17 +18,17 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Setup Julia (DOWNGRADE TO 1.10)
+      - name: Setup Julia 1.10 (NOT 1.12!)
         uses: julia-actions/setup-julia@v2
         with:
-          version: '1.10'  # THIS IS THE KEY FIX
+          version: '1.10'
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20'
 
-      - name: Delete Manifest.toml (force regenerate)
+      - name: Delete old Manifest.toml
         run: rm -f Manifest.toml
 
       - name: Install Julia dependencies
