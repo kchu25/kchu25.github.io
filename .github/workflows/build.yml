@@ -1,45 +1,74 @@
-name: build site
+name: Build and Deploy Site (Clean Build)
 
 on:
   push:
     branches: [ main ]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
 
 jobs:
   build:
     runs-on: ubuntu-latest
-
+    
     steps:
-      - name: Checkout
+      - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Setup Node (npm)
+      - name: Setup Julia
+        uses: julia-actions/setup-julia@v2
+        with:
+          version: '1.10'
+
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20'
 
-      - name: Setup Julia
-        uses: julia-actions/setup-julia@v1
-        with:
-          version: '1.12'
-
-      - name: Cache Julia artifacts & compiled
-        uses: actions/cache@v4
-        with:
-          path: |
-            ~/.julia/artifacts
-            ~/.julia/compiled
-            ~/.julia/packages
-          key: ${{ runner.os }}-julia-${{ hashFiles('Project.toml','Manifest.toml') }}
-
-      - name: Install deps & ensure OpenSSL_jll
+      - name: Clean Julia environment (NUCLEAR OPTION)
         run: |
-          julia --project=. -e 'using Pkg; Pkg.activate("."); try; Pkg.add("OpenSSL_jll"); catch; end; Pkg.instantiate(); Pkg.build(); Pkg.precompile(); println("=== Pkg.status() ==="); Pkg.status()'
+          rm -rf ~/.julia/artifacts
+          rm -rf ~/.julia/compiled
+          rm -rf ~/.julia/packages
+          echo "🧹 Cleaned all Julia caches"
 
-      - name: Install highlight.js with npm
-        run: npm install highlight.js --no-save
-
-      - name: Build site with Franklin
+      - name: Install Julia dependencies from scratch
         run: |
-          julia --project=. -e 'using Pkg; Pkg.instantiate(); include("utils.jl"); using Franklin; optimize()'
+          julia --project=. -e '
+            using Pkg
+            Pkg.instantiate()
+            Pkg.resolve()
+            Pkg.precompile()
+            println("\n=== Package Status ===")
+            Pkg.status()
+          '
 
-      # Optionally add steps to deploy the generated site to GitHub Pages or push __site/_site to gh-pages branch
+      - name: Install Node.js dependencies
+        run: npm install highlight.js
+
+      - name: Build Franklin site
+        run: |
+          julia --project=. -e '
+            using Franklin
+            optimize()
+          '
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: __site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
