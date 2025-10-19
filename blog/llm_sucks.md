@@ -1,0 +1,11 @@
+@def title = "Why LLMs suck at giving life advices"
+@def published = "19 October 2025"
+@def tags = ["others"]
+
+## Why LLMs suck at giving life advices
+
+We live in a world where the things we tend to care about most -- wealth, fame, and similar achievements -- follow power-law distributions. The good news is that outliers are common and easy to spot. The bad news is that reaching outlier status typically requires non-trivial amounts of energy. Why? Supply and demand. When actionable knowledge becomes widely known, everyone tries to exploit it at some point. The resulting competition dilutes the potential gains across many actors, making it harder for any single person to capture outsized returns. This dynamic is most vivid in the stock market, where insider trading, initial knowledge gaps, and asymmetric information determine who can achieve exceptional results with less effort.
+
+What makes LLMs particularly limited for life advice is that their responses, by default, occupy a semantic space that tends toward normal distribution (just think CLT) for a given prompt. What's more valuable is the borderline controversial, counter-intuitive, well-guarded insight likely lives in the tailed ends of the response distribution, if it exists in the LLM's semantic space at all. In a certain sense, accessing these insights is like escaping a local minimum: the crudest method is through noise, but more sophisticated approaches resemble what Taleb might describe -- deliberately seeking out good filters, e.g. experienced practitioners who have explored the forefront of human knowledge.
+
+In many areas of science and technology, however, LLMs prove immensely valuable. Knowledge that was once expensive is now cheap, and learning, while not universally barrier-free, has become dramatically more accessible in many domains. Routine boilerplate tasks like unit tests and memory management in software development, which bear little relation to the original problem, can now be automated. Readers gain unprecedented control over the pace at which they engage with technically dense papers. In this respect, we interpolate our knowledge gaps, compensating for the bottleneck of absorbing and utilizing knowledge.
