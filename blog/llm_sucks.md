@@ -1,4 +1,4 @@
-@def title = "Why LLMs suck at giving life advices"
+@def title = "Hot take: why LLMs suck at giving life advices"
 @def published = "19 October 2025"
 @def tags = ["others"]
 
