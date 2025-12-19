@@ -1,11 +1,19 @@
 @def title = "schu - others"
 
+
 # My past career
 
 I was a professional ballet dancer with [Ballet West](https://www.balletwest.org/), [Zurich Ballet](https://www.opernhaus.ch/en/), [New Jersey Ballet](https://www.njballet.org/), and [Kaohsiung City Ballet](https://www.kcb.org.tw/). I have extensive knowledge of the culture, career paths, artistry, and athleticism involved in both classical ballet and contemporary dance. My artistic view is strongly influenced by [Igal Perry](https://www.peridance.com/facprofile.cfm?FID=1&name=Igal%20Perry%20_//%20Artistic%20Director), artistic director of [Peridance Center](https://www.peridance.com/), through his [choreography](https://www.peridancecontemporary.org/igal-perry-repertory) and mentorship. Some of my career highlights include
 
+
 - Performed nearly every role in *The Nutcracker*.
     - Interestingly, at [Ballet West](https://www.balletwest.org/), I was once the Nutcracker, and [Nathan Chen](https://en.wikipedia.org/wiki/Nathan_Chen) was my Fritz, Clara's naughty brother.
+<!-- ~~~
+<div style="float: right; margin-left: 25px; margin-bottom: 20px; max-width: 225px;">
+  <img src="../pics/jackson.jpg" alt="Description" style="width: 100%;">
+  <center><p style="margin-top: 5px; margin-left: 39px; margin-right: 2px; font-size: 0.45em; color: #666;">With Zhang Xi, Cao Shuci (National Ballet of China) at USA IBC 2010</p></center>
+</div>
+~~~ -->
 - Won the Capezio Award at the 2010 USA International Ballet Competition (Jackson), under the name Guixien Chu. 
 - Got eliminated in the first round at the 2010 Varna International Ballet Competition. 
     - My friend [Avetik Karapetyan](https://www.youtube.com/@avcarvest) did great, though!
@@ -17,6 +25,7 @@ I was a professional ballet dancer with [Ballet West](https://www.balletwest.org
     - Many of my friends went on to dance at [Cloud Gate Theatre of Taiwan](https://www.cloudgate.org.tw/en/cg).
 - Quarterfinalist at the 2004 Prix de Lausanne (inclined/raked stage, ouch!).
     - [Alex Wong](https://www.imdb.com/name/nm3940692/) won the competition that year.
+
 
 
 If you or your children are interested in ballet, I’d be happy to share my experience.
