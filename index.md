@@ -3,7 +3,7 @@
 
 @@img-me ![Proguard](./me.jpg) @@
 
-I am a post-doctoral research scientist at Columbia University, collaborating with [Chaolin Zhang](https://systemsbiology.columbia.edu/faculty/chaolin-zhang) and other wonderful members in the [Zhang Lab](https://zhanglab.c2b2.columbia.edu/). Previously, I earned my Ph.D. in computer science at Washington University in St. Louis under the mentorship of [Gary Stormo](https://en.wikipedia.org/wiki/Gary_Stormo). My current research focuses on deep learning interpretaions, and developing computational methods for analyzing (1) protein-DNA/RNA interactions and (2) high-throughput functional genomics/proteomics screenings.
+I am a post-doctoral research scientist at Columbia University, collaborating with [Chaolin Zhang](https://systemsbiology.columbia.edu/faculty/chaolin-zhang) and other wonderful members in the [Zhang Lab](https://zhanglab.c2b2.columbia.edu/). Previously, I earned my Ph.D. in computer science at Washington University in St. Louis under the mentorship of [Gary Stormo](https://en.wikipedia.org/wiki/Gary_Stormo). My current research focuses on deep learning interpretations and developing computational methods for analyzing (1) protein-DNA/RNA interactions and (2) high-throughput functional genomics/proteomics screenings.
 
 A central theme in my research is to consider what representation is suited for biological sequences that give the most helpful information. Traditionally, there are k-mers, position-weight-matrices, parametric statistical models like HMMs, and more recently, deep neural networks. I am particularly interested in the sparse representations perspective, a rich view that allows us to build techniques to answer challenging inferential questions in regulatory genomics.
 
@@ -17,7 +17,7 @@ We can obtain a sparse representation of DNA sequences using principled deep lea
 
 ---
 
-My name in Mandarin is Kuei-Hsien Chu (朱桂賢). Hsien pronounced like Shane, and that's how I got Shane. I grew up in Taiwan and have been living in the US since 2008.
+My name in Mandarin is Kuei-Hsien Chu (朱桂賢). Hsien is pronounced like Shane, and that's how I got Shane. I grew up in Taiwan and have been living in the US since 2008.
 
 
 <!-- 

@@ -15,7 +15,7 @@ I was a professional ballet dancer with [Ballet West](https://www.balletwest.org
 </div>
 ~~~ -->
 - Won the Capezio Award at the 2010 USA International Ballet Competition (Jackson), under the name Guixien Chu. 
-- Got eliminated in the first round at the 2010 Varna International Ballet Competition. 
+- Was eliminated in the first round at the 2010 Varna International Ballet Competition. 
     - My friend [Avetik Karapetyan](https://www.youtube.com/@avcarvest) did great, though!
     - Roommate was [Brooklyn Mack](https://en.wikipedia.org/wiki/Brooklyn_Mack).
 - Semi-finalist at the 2009 Helsinki International Ballet Competition.
