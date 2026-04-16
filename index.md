@@ -3,8 +3,13 @@
 
 @@img-me ![Proguard](./me.jpg) @@
 
-I am a post-doctoral research scientist at Columbia University, collaborating with [Chaolin Zhang](https://systemsbiology.columbia.edu/faculty/chaolin-zhang) and other wonderful members in the [Zhang Lab](https://zhanglab.c2b2.columbia.edu/). Previously, I earned my Ph.D. in computer science at Washington University in St. Louis under the mentorship of [Gary Stormo](https://en.wikipedia.org/wiki/Gary_Stormo). My current research focuses on deep learning interpretations and developing computational methods for analyzing (1) protein-DNA/RNA interactions and (2) high-throughput functional genomics/proteomics screenings.
+I am a post-doctoral research scientist at Columbia University, collaborating with [Chaolin Zhang](https://systemsbiology.columbia.edu/faculty/chaolin-zhang) and other wonderful members in the [Zhang Lab](https://zhanglab.c2b2.columbia.edu/). Previously, I earned my Ph.D. in computer science at Washington University in St. Louis under the mentorship of [Gary Stormo](https://en.wikipedia.org/wiki/Gary_Stormo). My current research focuses on deep learning interpretability and computational methods for protein-DNA/RNA interactions and high-throughput functional genomics/proteomics. 
 
+A central theme in my research is to develop computational methods for biological sequences that elucidate the underlying patterns driving observed phenomena. These problems are fundamentally combinatorial — i.e. NP-hard — placing them squarely in computer science's domain. The quest to solve them is well motivated: combinatorial patterns govern rules across different layers of gene regulation (e.g., transcript abundance and translation efficiency) and underlie proteome diversity (e.g., splicing). I develop scalable techniques to tackle them and reveal why combinations of sequence patterns matter.
+
+
+
+<!-- 
 A central theme in my research is to consider what representation is suited for biological sequences that give the most helpful information. Traditionally, there are k-mers, position-weight-matrices, parametric statistical models like HMMs, and more recently, deep neural networks. I am particularly interested in the sparse representations perspective, a rich view that allows us to build techniques to answer challenging inferential questions in regulatory genomics.
 
 For example, in regulatory genomics, we want to infer the following:
@@ -13,7 +18,7 @@ For example, in regulatory genomics, we want to infer the following:
 - The key regulatory elements in the DNA sequences give rise to the observed phenomenon.
 - The counterfactuals, e.g., a minimal change to a DNA sequence that turns off the observed effects.
 
-We can obtain a sparse representation of DNA sequences using principled deep learning techniques, e.g., deep unfolding. We use [sparse representations to reveal many more hidden motifs not shown on the JASPAR database](https://academic.oup.com/bioinformatics/advance-article/doi/10.1093/bioinformatics/btad378/7192989?utm_source=advanceaccess&utm_campaign=bioinformatics&utm_medium=email). Our result shows that sparse representation is a scalable and interpretable approach to biological sequence problems.
+We can obtain a sparse representation of DNA sequences using principled deep learning techniques, e.g., deep unfolding. We use [sparse representations to reveal many more hidden motifs not shown on the JASPAR database](https://academic.oup.com/bioinformatics/advance-article/doi/10.1093/bioinformatics/btad378/7192989?utm_source=advanceaccess&utm_campaign=bioinformatics&utm_medium=email). Our result shows that sparse representation is a scalable and interpretable approach to biological sequence problems. -->
 
 ---
 

@@ -412,6 +412,8 @@ td {
     text-align: center;
     padding-right: 0%;
     padding-left: 0%;
+    margin-left: 20px;
+    margin-bottom: 10px;
     float: right;
     border: 1px solid black;
 }
