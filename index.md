@@ -5,7 +5,7 @@
 
 I am a post-doctoral research scientist at Columbia University, collaborating with [Chaolin Zhang](https://systemsbiology.columbia.edu/faculty/chaolin-zhang) and other wonderful members in the [Zhang Lab](https://zhanglab.c2b2.columbia.edu/). Previously, I earned my Ph.D. in computer science at Washington University in St. Louis under the mentorship of [Gary Stormo](https://en.wikipedia.org/wiki/Gary_Stormo). My current research focuses on deep learning interpretability and computational methods for protein-DNA/RNA interactions and high-throughput functional genomics/proteomics. 
 
-A central theme in my research is to develop computational methods for biological sequences that elucidate the underlying patterns driving observed phenomena. These problems are fundamentally combinatorial, i.e. NP-hard problems. The quest to solve them is well motivated: combinatorial patterns govern rules across different layers of gene regulation (e.g., transcript abundance and translation efficiency) and underlie proteome diversity (e.g., splicing). I develop scalable techniques to tackle them and reveal why combinations of sequence patterns matter.
+A central theme in my research is to develop computational methods for biological sequences that elucidate the underlying patterns driving observed phenomena. These problems are fundamentally combinatorial, i.e. NP-hard problems. The quest to solve them is well motivated: combinatorial patterns govern rules across different layers of gene regulation (e.g. transcription and translation) and underlie proteome diversity (e.g. splicing). I develop scalable techniques to tackle them and reveal why combinations of sequence patterns matter.
 
 
 <!-- 
