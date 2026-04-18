@@ -36,6 +36,6 @@ If you or your children are interested in ballet, I’d be happy to share my exp
 Acknowledgement: I am fortunate to have launched my career at Zurich Ballet through the help of 
 <a style="color:grey" href="https://www.artwave.tw/">Tzer-Shing Wang and Tzong-Yi Shieh</a>. I am also grateful to 
 <a style="color:grey" href="https://www.kcb.org.tw/about.php?id=23">張秀如</a> for the opportunity to dance with 
-<a style="color:grey" href="https://www.kcb.org.tw/">KCB</a>, and to <a style="color:grey" href="https://www.cloudgate.org.tw/en/cg">Cloud Gate</a> for sponsoring me through the Lo-Meng-Fei Dance Fund.
+<a style="color:grey" href="https://www.kcb.org.tw/">KCB</a>, and to <a style="color:grey" href="https://www.cloudgate.org.tw/en/cg">Cloud Gate</a> for sponsoring me through the <a style="color:grey" href="https://en.wikipedia.org/wiki/Lo_Man-fei">Lo Man-Fei</a> Dance Fund.
 </small></span>
 ~~~
