@@ -219,17 +219,15 @@ h6 {
 }
 
 .franklin-content h1 {
-  padding-bottom: 0.5em;
-  border-bottom: 1px double lightgrey;
   margin-top: 1.5em;
-  margin-bottom: 1em;
+  margin-bottom: 0.6em;
+  font-weight: 600;
 }
 
 .franklin-content h2 {
-  padding-bottom: 0.3em;
-  border-bottom: 1px solid lightgrey;
   margin-top: 2em;
-  margin-bottom: 1em;
+  margin-bottom: 0.6em;
+  font-weight: 600;
 }
 
 .franklin-content h1 a { color: inherit; }
@@ -285,39 +283,34 @@ td {
 }
 
 .franklin-content a {
-  color: #283747;;
-  text-decoration: none;
+  color: #283747;
+  text-decoration: underline;
+  text-decoration-color: rgba(40, 55, 71, 0.3);
+  text-underline-offset: 2px;
+  transition: text-decoration-color 0.15s ease;
 }
 
 .franklin-content a:hover {
-  text-decoration: underline;
+  text-decoration-color: #283747;
 }
 
 /* ==================================================================
     HYPERREFS AND FOOTNOTES
 ================================================================== */
-/* unvisited link */
-  a:link {
+  a:link, a:visited {
     color: #283747;
     text-decoration: underline;
+    text-decoration-color: rgba(40, 55, 71, 0.3);
+    text-underline-offset: 2px;
   }
-  
-  /* visited link */
-  a:visited {
-    color: #283747;
-    text-decoration: underline;
-  }
-  
-  /* mouse over link */
+
   a:hover {
-    color: #95A5A6;
-    text-decoration: underline;
+    color: #283747;
+    text-decoration-color: #283747;
   }
-  
-  /* selected link */
+
   a:active {
     color: #283747;
-    text-decoration: underline;
   }
 
 .franklin-content .eqref a { color: green; }
@@ -415,7 +408,8 @@ td {
     margin-left: 20px;
     margin-bottom: 10px;
     float: right;
-    border: 1px solid black;
+    border-radius: 4px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0, 0, 0, 0.06);
 }
 
 .image-left {
@@ -429,11 +423,11 @@ td {
     KATEX
 ================================================================== */
 
-body { counter-reset: eqnum; 
+body { counter-reset: eqnum;
     margin: auto;
     max-width: 815px;
     text-align: left;
-    background-color: #fff;
+    background-color: #faf9f6;
     word-wrap: break-word;
     overflow-wrap: break-word;
     line-height: 1.5;

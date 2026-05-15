@@ -5,7 +5,47 @@ header {
   position: relative;
   padding-left: 12.5%;
   padding-right: 12.5%;
-  margin-bottom: 50px;
+  margin-bottom: 14px;
+}
+
+header h1 {
+  color: #283747;
+  font-weight: 600;
+  margin-bottom: 0.5em;
+}
+
+header nav {
+  font-size: 1em;
+  letter-spacing: 0.01em;
+}
+
+header nav a,
+header nav a:link,
+header nav a:visited {
+  color: #5a6878;
+  text-decoration: none;
+  margin-right: 1.1em;
+}
+
+header nav a:hover {
+  color: #283747;
+  text-decoration: underline;
+  text-decoration-color: rgba(40, 55, 71, 0.4);
+  text-underline-offset: 4px;
+}
+
+header nav a.current {
+  color: #283747;
+  text-decoration: underline;
+  text-decoration-color: #283747;
+  text-underline-offset: 4px;
+}
+
+header hr {
+  border: 0;
+  border-top: 1px solid #1a1a1a;
+  margin: 14px 0 0 0;
+  height: 0;
 }
 
 /* on wide screens, fix content width to a max value */
