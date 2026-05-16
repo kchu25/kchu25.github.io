@@ -3,7 +3,7 @@
 
 # My previous career
 
-I was a professional ballet dancer with [Ballet West](https://www.balletwest.org/), [Zurich Ballet](https://www.opernhaus.ch/en/), [New Jersey Ballet](https://www.njballet.org/), and [Kaohsiung City Ballet](https://www.kcb.org.tw/). I know this world well: its culture, career paths, artistry, and athleticism, across both classical ballet and contemporary dance. My artistic view is strongly influenced by [Igal Perry](https://www.peridance.com/facprofile.cfm?FID=1&name=Igal%20Perry%20_//%20Artistic%20Director), artistic director of [Peridance Center](https://www.peridance.com/), through his [choreography](https://www.peridancecontemporary.org/igal-perry-repertory) and mentorship. Some highlights from my career:
+I was a professional ballet dancer with [Ballet West](https://www.balletwest.org/), [Zurich Ballet](https://www.opernhaus.ch/en/), [New Jersey Ballet](https://www.njballet.org/), and [Kaohsiung City Ballet](https://www.kcb.org.tw/). I know this world well: its culture, career paths, artistry, and athleticism, across both classical ballet and contemporary dance. Most of how I think about dance traces back to [Igal Perry](https://www.peridance.com/facprofile.cfm?FID=1&name=Igal%20Perry%20_//%20Artistic%20Director), through his [choreography](https://www.peridancecontemporary.org/igal-perry-repertory) and mentorship at [Peridance](https://www.peridance.com/). Some highlights from my career:
 
 
 - Performed nearly every role in *The Nutcracker*.
@@ -14,8 +14,7 @@ I was a professional ballet dancer with [Ballet West](https://www.balletwest.org
   <center><p style="margin-top: 5px; margin-left: 39px; margin-right: 2px; font-size: 0.45em; color: #666;">With Zhang Xi, Cao Shuci (National Ballet of China) at USA IBC 2010</p></center>
 </div>
 ~~~ -->
-- Performed principal and soloist roles, including James in *La Sylphide*, Melancholic in Balanchine's *The Four Temperaments*, Bluebird in *The Sleeping Beauty*, Lead Gypsy in *Don Quixote*, the *Le Corsaire* pas de deux, and Renfield in Ben Stevenson's *Dracula*.
-
+- Got to dance some other great parts: James in *La Sylphide*, Melancholic in Balanchine's *The Four Temperaments*, Bluebird in *Sleeping Beauty*, Lead Gypsy in *Don Q*, the *Corsaire* pas de deux, Renfield in Ben Stevenson's *Dracula*, and Igal Perry's *Ave Maria*.
 - Won the Capezio Award at the 2010 USA International Ballet Competition (Jackson), under the name Guixien Chu. 
 - Was eliminated in the first round at the 2010 Varna International Ballet Competition. 
     - My friend [Avetik Karapetyan](https://www.youtube.com/@avcarvest) did great, though!
