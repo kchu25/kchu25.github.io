@@ -3,7 +3,7 @@
 
 # My previous career
 
-I was a professional ballet dancer with [Ballet West](https://www.balletwest.org/), [Zurich Ballet](https://www.opernhaus.ch/en/), [New Jersey Ballet](https://www.njballet.org/), and [Kaohsiung City Ballet](https://www.kcb.org.tw/). I know the world well — its culture, career paths, artistry, and athleticism, across both classical ballet and contemporary dance. My artistic view is strongly influenced by [Igal Perry](https://www.peridance.com/facprofile.cfm?FID=1&name=Igal%20Perry%20_//%20Artistic%20Director), artistic director of [Peridance Center](https://www.peridance.com/), through his [choreography](https://www.peridancecontemporary.org/igal-perry-repertory) and mentorship. Some highlights from my career:
+I was a professional ballet dancer with [Ballet West](https://www.balletwest.org/), [Zurich Ballet](https://www.opernhaus.ch/en/), [New Jersey Ballet](https://www.njballet.org/), and [Kaohsiung City Ballet](https://www.kcb.org.tw/). I know this world well: its culture, career paths, artistry, and athleticism, across both classical ballet and contemporary dance. My artistic view is strongly influenced by [Igal Perry](https://www.peridance.com/facprofile.cfm?FID=1&name=Igal%20Perry%20_//%20Artistic%20Director), artistic director of [Peridance Center](https://www.peridance.com/), through his [choreography](https://www.peridancecontemporary.org/igal-perry-repertory) and mentorship. Some highlights from my career:
 
 
 - Performed nearly every role in *The Nutcracker*.
@@ -25,8 +25,6 @@ I was a professional ballet dancer with [Ballet West](https://www.balletwest.org
     - Many of my friends went on to dance at [Cloud Gate Theatre of Taiwan](https://www.cloudgate.org.tw/en/cg).
 - Quarterfinalist at the 2004 Prix de Lausanne (inclined/raked stage, ouch!).
     - [Alex Wong](https://www.imdb.com/name/nm3940692/) won the competition that year.
-
-
 
 If you or your children are interested in ballet, I’d be happy to share my experience.
 
