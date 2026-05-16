@@ -7,14 +7,11 @@ I was a professional ballet dancer with [Ballet West](https://www.balletwest.org
 
 - Performed nearly every role in *The Nutcracker*.
     - Interestingly, at [Ballet West](https://www.balletwest.org/), I was once the Nutcracker, and [Nathan Chen](https://en.wikipedia.org/wiki/Nathan_Chen) was my Fritz, Clara’s naughty brother.
-- Got to dance some other great parts: James in *La Sylphide*, Melancholic in Balanchine's *The Four Temperaments*, Bluebird in *Sleeping Beauty*, Lead Gypsy in *Don Q*, the *Corsaire* pas de deux, Renfield in Ben Stevenson's *Dracula*, and Igal Perry's *Ave Maria*.
-- Won the Capezio Award at the 2010 USA International Ballet Competition (Jackson), under the name Guixien Chu. 
+- Got to dance some other great parts: James in *La Sylphide*, Melancholic in Balanchine's *The Four Temperaments*, Bluebird in *Sleeping Beauty*, Lead Gypsy in *Don Q*, Renfield in Ben Stevenson's *Dracula*, and Igal Perry's *Ave Maria*.
+- Won the Capezio Award at the 2010 USA International Ballet Competition (Jackson), under the name Guixien Chu. <!-- Also: semi-finalist at the 2009 Helsinki International Ballet Competition, bronze medalist at the 2008 World Ballet Competition in Orlando, and finalist at the 2007 Seoul International Dance Competition. -->
 - Was eliminated in the first round at the 2010 Varna International Ballet Competition. 
     - My friend [Avetik Karapetyan](https://www.youtube.com/@avcarvest) did great, though!
     - Roommate was [Brooklyn Mack](https://en.wikipedia.org/wiki/Brooklyn_Mack).
-- Semi-finalist at the 2009 Helsinki International Ballet Competition.
-- Bronze medalist at the 2008 World Ballet Competition in Orlando.
-- Finalist at the 2007 Seoul International Dance Competition.
 - Completed high school at [Taipei National University of the Arts](https://w3.tnua.edu.tw/)
     - Many of my friends went on to dance at [Cloud Gate Theatre of Taiwan](https://www.cloudgate.org.tw/en/cg).
 - Quarterfinalist at the 2004 Prix de Lausanne (inclined/raked stage, ouch!).
