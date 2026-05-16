@@ -3,7 +3,7 @@
 
 # My previous career
 
-I was a professional ballet dancer with [Ballet West](https://www.balletwest.org/), [Zurich Ballet](https://www.opernhaus.ch/en/), [New Jersey Ballet](https://www.njballet.org/), and [Kaohsiung City Ballet](https://www.kcb.org.tw/). I know this world well: its culture, career paths, artistry, and athleticism, across both classical ballet and contemporary dance. Most of how I think about dance traces back to [Igal Perry](https://www.peridance.com/facprofile.cfm?FID=1&name=Igal%20Perry%20_//%20Artistic%20Director), through his [choreography](https://www.peridancecontemporary.org/igal-perry-repertory) and mentorship at [Peridance](https://www.peridance.com/). Some highlights from my career:
+I was a professional ballet dancer with [Ballet West](https://www.balletwest.org/), [Zurich Ballet](https://www.opernhaus.ch/en/), [New Jersey Ballet](https://www.njballet.org/), and [Kaohsiung City Ballet](https://www.kcb.org.tw/). I know this world well: its culture, career paths, artistry, and athleticism, across both classical ballet and contemporary dance. Most of how I think about dance traces back to [Igal Perry](https://www.peridance.com/faculty/artistic-director-igal-perry), through his [choreography](https://www.peridancecontemporary.org/igal-perry-repertory) and mentorship at [Peridance](https://www.peridance.com/). Some highlights from my career:
 
 - Performed nearly every role in *The Nutcracker*.
     - Interestingly, at [Ballet West](https://www.balletwest.org/), I was once the Nutcracker, and [Nathan Chen](https://en.wikipedia.org/wiki/Nathan_Chen) was my Fritz, Clara’s naughty brother.
