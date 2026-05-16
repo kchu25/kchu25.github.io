@@ -14,6 +14,8 @@ I was a professional ballet dancer with [Ballet West](https://www.balletwest.org
   <center><p style="margin-top: 5px; margin-left: 39px; margin-right: 2px; font-size: 0.45em; color: #666;">With Zhang Xi, Cao Shuci (National Ballet of China) at USA IBC 2010</p></center>
 </div>
 ~~~ -->
+- Performed principal and soloist roles, including James in *La Sylphide*, Melancholic in Balanchine's *The Four Temperaments*, Bluebird in *The Sleeping Beauty*, Lead Gypsy in *Don Quixote*, the *Le Corsaire* pas de deux, and Renfield in Ben Stevenson's *Dracula*.
+
 - Won the Capezio Award at the 2010 USA International Ballet Competition (Jackson), under the name Guixien Chu. 
 - Was eliminated in the first round at the 2010 Varna International Ballet Competition. 
     - My friend [Avetik Karapetyan](https://www.youtube.com/@avcarvest) did great, though!
@@ -25,6 +27,8 @@ I was a professional ballet dancer with [Ballet West](https://www.balletwest.org
     - Many of my friends went on to dance at [Cloud Gate Theatre of Taiwan](https://www.cloudgate.org.tw/en/cg).
 - Quarterfinalist at the 2004 Prix de Lausanne (inclined/raked stage, ouch!).
     - [Alex Wong](https://www.imdb.com/name/nm3940692/) won the competition that year.
+
+
 
 If you or your children are interested in ballet, I’d be happy to share my experience.
 
