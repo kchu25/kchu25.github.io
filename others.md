@@ -13,7 +13,7 @@ I was a professional ballet dancer with [Ballet West](https://www.balletwest.org
 
 <!-- Also: semi-finalist at the 2009 Helsinki International Ballet Competition, bronze medalist at the 2008 World Ballet Competition in Orlando, and finalist at the 2007 Seoul International Dance Competition. -->
 - Was eliminated in the first round at the 2010 Varna International Ballet Competition. 
-    - My friend [Avetik Karapetyan](https://www.youtube.com/@avcarvest) did great, though!
+    - My friend [Avetik Karapetyan](https://www.youtube.com/@avcarvest), on the other hand, did great!
     - Roommate was [Brooklyn Mack](https://en.wikipedia.org/wiki/Brooklyn_Mack).
 - Completed high school at [Taipei National University of the Arts](https://w3.tnua.edu.tw/)
     - Many of my friends went on to dance at [Cloud Gate Theatre of Taiwan](https://www.cloudgate.org.tw/en/cg).
