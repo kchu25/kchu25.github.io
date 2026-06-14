@@ -50,7 +50,3 @@ This results states that if we construct the count table $C$ in count-min sketch
 #### References
 
 {{show_refs randomalg }}
-
----
-
-{{citation_box}}

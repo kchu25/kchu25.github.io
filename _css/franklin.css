@@ -8,6 +8,11 @@
   --small: 16px;
   --normal: 19px;
   --text-color: hsv(0, 0%, 20%);
+  /* code blocks */
+  --mono: ui-monospace, "SF Mono", "JetBrains Mono", "Fira Code", Menlo, Consolas, "Liberation Mono", monospace;
+  --code-bg: hsl(220, 23%, 97%);
+  --code-border: hsl(220, 16%, 90%);
+  --code-text: #24292e;
 }
 
 /* ==================================================================
@@ -460,35 +465,44 @@ body { counter-reset: eqnum;
     CODE & HIGHLIGHT.JS
 ================================================================== */
 
+/* Inline code */
 code {
-  background-color: var(--block-background);  
-  padding: 0.1em 0.1em;
-  border-radius: 1px;
-  font-size: var(--small);
+  background-color: rgba(27, 31, 35, 0.05);
+  padding: 0.15em 0.4em;
+  border-radius: 5px;
+  font-size: 0.86em;
+  font-family: var(--mono);
+  color: var(--code-text);
+  word-break: break-word;
 }
 
+/* Code block: the card lives on <pre>, the inner <code> is transparent */
+pre {
+  margin: 1.5em 0;
+  padding: 0;
+  background-color: var(--code-bg);
+  border: 1px solid var(--code-border);
+  border-radius: 8px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+}
 
+pre code,
+pre code.hljs,
 pre code.language-julia {
-  background-color: var(--block-background);  
-  padding: 0.1em 0.2em;
-  border-radius: 2px;
-  font-size: 0.8em;
-}
-
-/* .franklin-content code { */
-
-/* background-color: rgba(27,31,35,0.05); */
-
-/* padding: 0.1em 0.2em; */
-
-/* border-radius: 2px; */
-
-/* font-size: 90%; } */
-
-.hljs {
-  font-size: var(--small);
-  line-height: 1.35em;
-  border-radius: 10px;
+  display: block;
+  background: none;
+  background-color: transparent;
+  border: none;
+  border-radius: 0;
+  padding: 1em 1.2em;
+  font-size: 0.9em;
+  line-height: 1.6;
+  font-family: var(--mono);
+  color: var(--code-text);
+  word-break: normal;
+  overflow-x: auto;
 }
 
 .hljs-meta { font-weight: bold;}
@@ -498,7 +512,8 @@ pre code.language-julia {
 
 .code-output {
   background: var(--output-background);
-  border: 1px dashed #dbdbdb;
+  border: 1px solid var(--code-border);
+  border-radius: 8px;
 }
 
 /* ==================================================================
