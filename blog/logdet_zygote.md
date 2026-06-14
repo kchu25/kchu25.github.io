@@ -8,9 +8,9 @@
 
 Does the computation of log-determinant of a matrix ever occur in the computational graph of a neural network?
 
-Surprisingly, it does. This arises in the context of Sparse Variational Gaussian Process (SVGP).
+It does, and one place it shows up is the Sparse Variational Gaussian Process (SVGP).
 
-In SVGP, our goal is to maximize a quantity known as the evidence lower bound (ELBO). The ELBO comprises of two terms, which basically says:
+In SVGP, our goal is to maximize a quantity known as the evidence lower bound (ELBO). The ELBO comprises two terms, which basically say:
 $$ \begin{align*}
     \text{ELBO} = \text{expected log likelihood term} - \text{KL divergence term}
     \end{align*}
@@ -23,7 +23,7 @@ $$ \begin{align*}
     \end{align*}
 $$
 
-($\mu$ and $\Sigma$ are mean and covariance of a variational distribution, and they are part of the model parameters in SVGP) In this context, we will disregard the grey terms as they are easily handled by Zygote.
+(here $\mu$ and $\Sigma$ are the mean and covariance of a variational distribution, and are part of the model parameters in SVGP). We will disregard the grey terms, since Zygote handles them easily.
 
 ### Differentiate the log-determinant of a matrix using Zygote.jl
 
@@ -104,9 +104,9 @@ And now we have:
 (gradient(log_determinant, cu(XᵀX)))[1] = Float32[0.8429185 -0.4507908 -0.78116626; -0.4507908 0.48173293 0.4726774; -0.78116626 0.4726774 1.2611524]
 ```
 
-This works. A quick check with the CPU version's result shows that our adjoint is returning the correct gradient of the log determinant of $\Sigma$.
+This works. Checking against the CPU version confirms that our adjoint returns the correct gradient of the log determinant of $\Sigma$.
 
-A side note: You may have noticed the line `L_inv = inv(A.L)`. Indeed, the inversion of a triangular matrix `A.L` still has quadratic time complexity, which is pretty darn slow for big matricies. Fortunately, in SVGP, the matrix $\Sigma$, i.e. the input matrix `Q` above is defined using what's called the "inducing points", which makes `Q` small. And because the inducing points is part of the model parameter of SVGP, you actually get to control the size of $\Sigma$.
+A side note: you may have noticed the line `L_inv = inv(A.L)`. Inverting the triangular matrix `A.L` still has quadratic time complexity, which is pretty darn slow for big matrices. Fortunately, in SVGP the matrix $\Sigma$ (the input `Q` above) is defined from what's called the "inducing points", which keeps `Q` small. And since the inducing points are themselves model parameters of SVGP, you actually get to control the size of $\Sigma$.
 
 An adjoint example is [here](https://discourse.julialang.org/t/zygote-meaning-of-adjoint-add-a-b-add-a-b/36707/4) by Pbellive.
 

@@ -1,3 +1,4 @@
+@def hidden = true
 @def title = "Convolutional Dictionary Learning vs. Convolutional Neural Network in one picture"
 @def published = "5 January 2023"
 @def tags = ["representation-learning", "machine-learning"]

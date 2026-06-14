@@ -1,3 +1,4 @@
+@def hidden = true
 @def title = "Convolutional dictionary learning"
 @def published = "19 November 2022"
 @def tags = ["comp-bio", "representation-learning"]

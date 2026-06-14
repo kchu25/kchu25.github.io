@@ -1,3 +1,4 @@
+@def hidden = true
 @def title = "Convolutions"
 @def published = "5 November 2022"
 @def tags = ["linear-algebra"]
@@ -32,4 +33,3 @@ What does this say? If we think about that $\fbm * \xbm$ as some kind of signal,
 We can leverage this intuition to think about applications related to bioinformatics. If the signal is a DNA string, and the feature represents a motif, e.g., it could be a k-mer, or a position frequency matrix, etc., then we have something meaningful: the sparse vector $\xbm$ indicates where the motif $\fbm$ is presented in the DNA string. Moreover, the non-zero entry in $\xbm$ doesn't need to be $1$. It could be an arbitrary value signifying the strength of the presense of $\fbm$ in the DNA string. 
 
 The description above is just an analogy. To develop this idea further, we look at a classic problem in signal processing: [convolutional dictionary learning](../cdl).
-

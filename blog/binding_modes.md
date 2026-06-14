@@ -1,3 +1,4 @@
+@def hidden = true
 @def title = "Proteins with complex binding modes"
 @def published = "2 December 2022"
 @def tags = ["comp-bio", "motif-discovery"]

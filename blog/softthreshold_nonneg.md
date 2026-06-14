@@ -1,3 +1,4 @@
+@def hidden = true
 @def title = "Soft-thresholding operator with [0,1] constraint"
 @def published = "12 March 2024"
 @def tags = ["optimization"]

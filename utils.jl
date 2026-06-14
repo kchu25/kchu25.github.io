@@ -50,9 +50,13 @@ Plug in the list of blog posts contained in the `/blog/` folder.
             continue
         end
         ps  = splitext(post)[1]
-        write(io, "<li><span><i>")
         url = "/blog/$ps/"
         surl = strip(url, '/')
+        # skip posts marked hidden, e.g. with `@def hidden = true`
+        if pagevar(surl, :hidden) === true
+            continue
+        end
+        write(io, "<li><span><i>")
         title = pagevar(surl, :title)
         pubdate = pagevar(surl, :published)
         if isnothing(pubdate)
