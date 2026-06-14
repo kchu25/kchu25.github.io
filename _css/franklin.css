@@ -13,6 +13,10 @@
   --code-bg: hsl(220, 23%, 97%);
   --code-border: hsl(220, 16%, 90%);
   --code-text: #24292e;
+  /* math statement boxes (definitions, theorems) */
+  --statement-bg: hsl(0, 0%, 98%);
+  --statement-border: hsl(0, 0%, 90%);
+  --statement-accent: hsl(0, 0%, 80%);
 }
 
 /* ==================================================================
@@ -534,6 +538,15 @@ pre code.language-julia {
 }
 
 .graybox {
-    border-left: 4px solid #c0b0b02c; 
-    padding-left: 10px;
+    background-color: var(--statement-bg);
+    border: 1px solid var(--statement-border);
+    border-left: 4px solid var(--statement-accent);
+    border-radius: 8px;
+    padding: 0.9em 1.2em;
+    margin: 1.5em 0;
 }
+
+/* keep inner padding even: drop the outer margins of the first/last child
+   (e.g. a leading paragraph or a trailing display equation) */
+.graybox > :first-child { margin-top: 0; }
+.graybox > :last-child { margin-bottom: 0; }
