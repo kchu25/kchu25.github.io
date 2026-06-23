@@ -10,6 +10,12 @@ permissions:
   pages: write
   id-token: write
 
+# Allow only one deployment at a time; let an in-progress deploy finish
+# rather than cancelling it (avoids "in progress deployment" 400 errors).
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
 jobs:
   build:
     runs-on: ubuntu-latest
