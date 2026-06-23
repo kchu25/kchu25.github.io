@@ -1,4 +1,4 @@
-@def hidden = true
+@def hidden = false
 @def title = "Convolutions"
 @def published = "5 November 2022"
 @def tags = ["linear-algebra"]
