@@ -1,11 +1,15 @@
-<header>
-  <h1>Shane Chu</h1>
-  <nav>
-    <a href="/" {{ispage index.html}}class="current"{{end}}>about</a>
-    <a href="/research" {{ispage research.html research/index.html}}class="current"{{end}}>research</a>
-    <a href="/blog" {{ispage blog/index.html blog/*}}class="current"{{end}}>notes</a>
-    <a href="/Shane_CV.pdf">cv</a>
-    <a href="/others" {{ispage others.html others/index.html}}class="current"{{end}}>others</a>
-  </nav>
-  <hr/>
+<header class="site-header">
+  <div class="site-header-inner">
+    <a class="brand" href="/">
+      <img class="brand-avatar" src="/me.jpg" alt="" width="44" height="44">
+      <span class="brand-name">Shane Chu</span>
+    </a>
+    <nav aria-label="Main">
+      <a href="/" {{ispage index.html}}class="current"{{end}}>about</a>
+      <a href="/research" {{ispage research.html research/index.html}}class="current"{{end}}>research</a>
+      <a href="/blog" {{ispage blog/index.html blog/*}}class="current"{{end}}>notes</a>
+      <a href="/Shane_CV.pdf" class="nav-file">cv</a>
+      <a href="/others" {{ispage others.html others/index.html}}class="current"{{end}}>others</a>
+    </nav>
+  </div>
 </header>

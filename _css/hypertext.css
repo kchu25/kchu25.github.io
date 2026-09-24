@@ -1,66 +1,96 @@
-/* Simple css to follow the geometry of franklin-content (see franklin.css) */
+/* Site header: follows the geometry of franklin-content (see franklin.css) */
 
-header {
-  margin-top: 75px;
-  position: relative;
-  padding-left: 12.5%;
-  padding-right: 12.5%;
-  margin-bottom: 14px;
+.site-header {
+  max-width: calc(var(--measure) + 2 * var(--gutter));
+  margin: 0 auto;
+  padding: 36px var(--gutter) 0;
 }
 
-header h1 {
-  color: #283747;
-  font-weight: 600;
-  margin-bottom: 0.5em;
+.site-header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 14px 20px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid var(--line);
 }
 
-header nav {
-  font-size: 1em;
-  letter-spacing: 0.01em;
-}
-
-header nav a,
-header nav a:link,
-header nav a:visited {
-  color: #5a6878;
+.site-header .brand,
+.site-header .brand:link,
+.site-header .brand:visited {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--ink);
   text-decoration: none;
-  margin-right: 1.1em;
 }
 
-header nav a:hover {
-  color: #283747;
-  text-decoration: underline;
-  text-decoration-color: rgba(40, 55, 71, 0.4);
-  text-underline-offset: 4px;
+.site-header .brand-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 0 0 3px var(--bg), 0 0 0 5px var(--accent-soft);
 }
 
-header nav a.current {
-  color: #283747;
-  text-decoration: underline;
-  text-decoration-color: #283747;
-  text-underline-offset: 4px;
+/* the about page already shows the big portrait */
+.page-home .site-header .brand-avatar { display: none; }
+
+.site-header .brand-name {
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  font-weight: 650;
+  line-height: 1;
+  letter-spacing: -0.015em;
+  font-variation-settings: "SOFT" 50;
 }
 
-header hr {
-  border: 0;
-  border-top: 1px solid #1a1a1a;
-  margin: 14px 0 0 0;
-  height: 0;
+.site-header .brand-name::after {
+  content: ".";
+  color: var(--accent);
 }
 
-/* on wide screens, fix content width to a max value */
-@media (min-width: 940px) {
-  header {
-    width: 705px;
-    margin-left: auto;
-    margin-right: auto;
-  }
+.site-header nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
 }
 
-/* on narrow device, reduce margins */
+.site-header nav a,
+.site-header nav a:link,
+.site-header nav a:visited {
+  padding: 0.3rem 0.85rem;
+  border-radius: 999px;
+  font-size: 0.93rem;
+  font-weight: 600;
+  color: var(--ink-2);
+  text-decoration: none;
+}
+
+.site-header nav a:hover {
+  background: var(--sand);
+  color: var(--ink);
+}
+
+.site-header nav a.current {
+  background: var(--accent-soft);
+  color: var(--accent-ink);
+}
+
+/* files open in a new view; hint at it */
+.site-header nav a.nav-file::after {
+  content: "\2197";
+  margin-left: 0.2em;
+  font-size: 0.85em;
+  opacity: 0.6;
+}
+
 @media (max-width: 480px) {
-  header {
-    padding-left: 6%;
-    padding-right: 6%;
-  }
+  .site-header { padding-top: 24px; }
+  .site-header .brand-name { font-size: 1.5rem; }
+  .site-header nav { margin-left: -0.6rem; }
+  .site-header nav a,
+  .site-header nav a:link,
+  .site-header nav a:visited { padding: 0.3rem 0.6rem; }
 }

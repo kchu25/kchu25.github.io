@@ -25,9 +25,6 @@ Plug in the list of blog posts contained in the `/blog/` folder.
 """
 @delay function hfun_blogposts()
     today = Dates.today()
-    curyear = year(today)
-    curmonth = month(today)
-    curday = day(today)
 
     list = readdir("blog")
     filter!(f -> endswith(f, ".md"), list)
@@ -56,15 +53,20 @@ Plug in the list of blog posts contained in the `/blog/` folder.
         if pagevar(surl, :hidden) === true
             continue
         end
-        write(io, "<li><span><i>")
         title = pagevar(surl, :title)
         pubdate = pagevar(surl, :published)
-        if isnothing(pubdate)
-            date    = "$curyear-$curmonth-$curday"
-        else
-            date    = Date(pubdate, dateformat"d U Y")
+        date = isnothing(pubdate) ? today : Date(pubdate, dateformat"d U Y")
+        write(io, """<li><time datetime="$date">$(Dates.format(date, dateformat"u d, Y"))</time>""")
+        write(io, """<a class="post-link" href="$url">$title</a>""")
+        tags = pagevar(surl, :tags)
+        if !isnothing(tags) && !isempty(tags)
+            write(io, """<span class="post-tags">""")
+            for t in tags
+                write(io, """<a href="/tag/$(lowercase(t))/">$(lowercase(t))</a>""")
+            end
+            write(io, "</span>")
         end
-        write(io, """$date  </i></span>&emsp;<a href="$url">$title</a>""")
+        write(io, "</li>")
     end
     write(io, "</ul>")
     return String(take!(io))
