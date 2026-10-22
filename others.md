@@ -7,7 +7,7 @@ I was a professional ballet dancer with [Ballet West](https://www.balletwest.org
 
 - Performed nearly every role in *The Nutcracker*.
     - Interestingly, at [Ballet West](https://www.balletwest.org/), I was once the Nutcracker, and [Nathan Chen](https://en.wikipedia.org/wiki/Nathan_Chen) was my Fritz, Clara’s naughty brother.
-- Got to dance some other great parts: James in *La Sylphide*, Melancholic in Balanchine's *The Four Temperaments*, Bluebird in *Sleeping Beauty*, Lead Gypsy in *Don Q*, Renfield in Ben Stevenson's *Dracula*, and Igal Perry's *Ave Maria*.
+- Got to dance some other great parts: James in *La Sylphide*, Melancholic in Balanchine's *The Four Temperaments*, Bluebird in *Sleeping Beauty*, Lead Gypsy in [*Don Q*](https://archive.sltrib.com/article.php?id=53457511&itype=CMSID), Renfield in Ben Stevenson's *Dracula*, and Igal Perry's *Ave Maria*.
 - Won the Capezio Award at the 2010 USA International Ballet Competition (Jackson), under the name Guixien Chu.
   - Several future principals competed that year: [Kimin Kim](https://www.mariinsky.ru/en/company/ballet_mt_men/kimin_kim/) (Mariinsky); [Marcelino Sambé](https://www.rbo.org.uk/people/marcelino-sambe) and [Fumi Kaneko](https://en.wikipedia.org/wiki/Fumi_Kaneko) (Royal Ballet); [Cao Shuci](https://baike.baidu.com/item/%E6%9B%B9%E8%88%92%E6%85%88/11064210) (National Ballet of China); [Esteban Hernández](https://www.sfballet.org/dancers/esteban-hernandez/) (San Francisco Ballet); and [Ji Young Chae](https://www.bostonballet.org/company/ji-young-chae/), [Seo Hye Han](https://www.bostonballet.org/company/seo-hye-han/), and [Derek Dunn](https://www.bostonballet.org/company/derek-dunn) (Boston Ballet).
 
