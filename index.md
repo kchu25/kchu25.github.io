@@ -3,7 +3,7 @@
 
 @@img-me ![Proguard](./me.jpg) @@
 
-I am a post-doctoral research scientist at Columbia University, collaborating with [Chaolin Zhang](https://systemsbiology.columbia.edu/faculty/chaolin-zhang) and other members of the [Zhang Lab](https://zhanglab.c2b2.columbia.edu/). Previously, I earned my Ph.D. in computer science at Washington University in St. Louis under the mentorship of [Gary Stormo](https://en.wikipedia.org/wiki/Gary_Stormo). My current research focuses on deep learning interpretability, computational methods for protein-DNA/RNA interactions, and high-throughput functional genomics/proteomics. 
+I am a post-doctoral research scientist at Columbia University. Previously, I earned my Ph.D. in computer science at Washington University in St. Louis under the mentorship of [Gary Stormo](https://en.wikipedia.org/wiki/Gary_Stormo). My current research focuses on deep learning interpretability, computational methods for protein-DNA/RNA interactions, and high-throughput functional genomics/proteomics. 
 
 A central theme in my research is to develop computational methods for biological sequences that elucidate the underlying patterns driving observed phenomena. These problems are fundamentally combinatorial, many of which are NP-hard. This matters because combinatorial patterns encode the rules across different layers of gene regulation (e.g. transcription and translation) and underlie proteome diversity (e.g. splicing). I develop scalable techniques to tackle them and reveal why combinations of sequence patterns matter.
 
@@ -30,7 +30,7 @@ My name in Mandarin is Kuei-Hsien Chu (朱桂賢). Hsien is pronounced like Shan
 @@clear @@
 @@img-me-small ![Proguard](./me.jpg) @@
 
-I am a post-doctoral research scientist at Columbia University, collaborating with [Chaolin Zhang](https://systemsbiology.columbia.edu/faculty/chaolin-zhang) in the [Zhang Lab](https://zhanglab.c2b2.columbia.edu/). I earned my Ph.D. in computer science at Washington University in St. Louis under [Gary Stormo](https://en.wikipedia.org/wiki/Gary_Stormo). My current research focuses on deep learning interpretations, demonstrated through applications involving high-throughput functional genomics/proteomics screenings.
+I am a post-doctoral research scientist at Columbia University. I earned my Ph.D. in computer science at Washington University in St. Louis under [Gary Stormo](https://en.wikipedia.org/wiki/Gary_Stormo). My current research focuses on deep learning interpretations, demonstrated through applications involving high-throughput functional genomics/proteomics screenings.
 
 @@spacing @@
 
