@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>Bayesian Optimization Demo</title>
+<style>
+  :root {
+    --color-bg: #ffffff;
+    --color-text: #1a1a2e;
+    --color-gp-mean: #2563eb;
+    --color-gp-band: rgba(37, 99, 235, 0.15);
+    --color-gp-band-stroke: rgba(37, 99, 235, 0.3);
+    --color-true-fn: #9ca3af;
+    --color-obs-point: #1e293b;
+    --color-next-point: #ef4444;
+    --color-acq: rgba(249, 115, 22, 0.5);
+    --color-acq-fill: rgba(249, 115, 22, 0.08);
+    --color-btn-primary: #2563eb;
+    --color-btn-hover: #1d4ed8;
+    --color-btn-secondary: #64748b;
+    --color-annotation-bg: rgba(255,255,255,0.92);
+    --color-border: #e2e8f0;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: var(--color-bg);
+    color: var(--color-text);
+    overflow: hidden;
+    touch-action: manipulation;
+    -webkit-user-select: none;
+    user-select: none;
+  }
+
+  #app {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    height: 100dvh;
+    padding: 12px 16px;
+  }
+
+  header {
+    text-align: center;
+    padding-bottom: 8px;
+    flex-shrink: 0;
+  }
+
+  header h1 {
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: -0.3px;
+  }
+
+  header .subtitle {
+    font-size: 13px;
+    color: #64748b;
+    margin-top: 2px;
+  }
+
+  #canvas-wrap {
+    flex: 1;
+    position: relative;
+    min-height: 0;
+  }
+
+  canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  #annotation-box {
+    position: absolute;
+    top: 12px;
+    left: 16px;
+    background: var(--color-annotation-bg);
+    border: 1px solid var(--color-border);
+    border-radius: 10px;
+    padding: 10px 14px;
+    font-size: 15px;
+    line-height: 1.45;
+    max-width: 340px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    pointer-events: none;
+    transition: opacity 0.3s;
+  }
+
+  #annotation-box.hidden { opacity: 0; }
+
+  .legend {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 14px;
+    padding: 6px 0 4px;
+    font-size: 13px;
+    flex-shrink: 0;
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .legend-swatch {
+    width: 18px;
+    height: 4px;
+    border-radius: 2px;
+  }
+
+  .legend-circle {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+  }
+
+  .controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 10px 0 4px;
+    flex-shrink: 0;
+  }
+
+  button {
+    font-size: 17px;
+    font-weight: 600;
+    border: none;
+    border-radius: 12px;
+    padding: 14px 32px;
+    cursor: pointer;
+    transition: background 0.15s, transform 0.1s;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  button:active { transform: scale(0.97); }
+
+  #btn-next {
+    background: var(--color-btn-primary);
+    color: #fff;
+  }
+
+  #btn-next:hover { background: var(--color-btn-hover); }
+
+  #btn-next:disabled {
+    background: #94a3b8;
+    cursor: default;
+  }
+
+  #btn-reset {
+    background: #f1f5f9;
+    color: var(--color-btn-secondary);
+  }
+
+  #btn-toggle {
+    background: #f1f5f9;
+    color: var(--color-btn-secondary);
+    font-size: 14px;
+    padding: 14px 18px;
+  }
+
+  .step-counter {
+    font-size: 15px;
+    font-weight: 500;
+    color: #64748b;
+    min-width: 90px;
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+<div id="app">
+  <header>
+    <h1>Bayesian Optimization</h1>
+    <div class="subtitle">Finding the peak of an unknown function from noisy measurements</div>
+  </header>
+
+  <div class="legend">
+    <div class="legend-item">
+      <div class="legend-swatch" style="background:var(--color-gp-mean)"></div>
+      <span>GP prediction</span>
+    </div>
+    <div class="legend-item">
+      <div class="legend-swatch" style="background:var(--color-gp-band);border:1px solid var(--color-gp-band-stroke)"></div>
+      <span>Uncertainty</span>
+    </div>
+    <div class="legend-item">
+      <div class="legend-swatch" style="background:var(--color-true-fn);border-top:2px dashed var(--color-true-fn);height:0"></div>
+      <span>True function</span>
+    </div>
+    <div class="legend-item">
+      <div class="legend-circle" style="background:var(--color-obs-point)"></div>
+      <span>Observed</span>
+    </div>
+    <div class="legend-item">
+      <div class="legend-circle" style="background:var(--color-next-point)"></div>
+      <span>Next sample</span>
+    </div>
+  </div>
+
+  <div id="canvas-wrap">
+    <canvas id="plot"></canvas>
+    <div id="annotation-box" class="hidden"></div>
+  </div>
+
+  <div class="controls">
+    <button id="btn-toggle">Show true fn</button>
+    <button id="btn-reset">Reset</button>
+    <div class="step-counter" id="step-label">Step 0</div>
+    <button id="btn-next">Next Step</button>
+  </div>
+</div>
+
+<script>
+// ===== CONFIGURATION =====
+const CONFIG = {
+  maxSteps: 15,
+  initPoints: 3,
+  nGrid: 200,          // resolution of GP posterior
+  kernel: {
+    lengthScale: 0.15,
+    signalVar: 1.0,
+    noiseVar: 0.02      // observation noise variance (measurements are noisy)
+  },
+  ucbKappa: 2.0,        // UCB exploration parameter
+  animDuration: 400      // ms for transition
+};
+
+// ===== TRUE FUNCTION (easy to swap) =====
+function trueFunction(x) {
+  // Multi-modal: 3 peaks of different heights, clearly non-convex
+  return 0.7 * Math.exp(-60 * (x - 0.2) * (x - 0.2))
+       + 0.45 * Math.exp(-50 * (x - 0.5) * (x - 0.5))
+       + 1.2 * Math.exp(-70 * (x - 0.78) * (x - 0.78));
+}
+
+// ===== GAUSSIAN NOISE (Box-Muller, uses seeded RNG) =====
+function gaussianNoise(stddev) {
+  const u1 = Math.max(seededRandom(), 1e-10);
+  const u2 = seededRandom();
+  return stddev * Math.sqrt(-2 * Math.log(u1)) * Math.cos(2 * Math.PI * u2);
+}
+
+// ===== LINEAR ALGEBRA HELPERS =====
+function matCreate(n, m) {
+  const a = new Array(n);
+  for (let i = 0; i < n; i++) a[i] = new Float64Array(m);
+  return a;
+}
+
+function choleskyDecomp(A) {
+  const n = A.length;
+  const L = matCreate(n, n);
+  for (let i = 0; i < n; i++) {
+    for (let j = 0; j <= i; j++) {
+      let s = 0;
+      for (let k = 0; k < j; k++) s += L[i][k] * L[j][k];
+      if (i === j) {
+        const diag = A[i][i] - s;
+        L[i][j] = Math.sqrt(Math.max(diag, 1e-12));
+      } else {
+        L[i][j] = (A[i][j] - s) / L[j][j];
+      }
+    }
+  }
+  return L;
+}
+
+function choleskySolve(L, b) {
+  const n = L.length;
+  // Forward: L y = b
+  const y = new Float64Array(n);
+  for (let i = 0; i < n; i++) {
+    let s = 0;
+    for (let k = 0; k < i; k++) s += L[i][k] * y[k];
+    y[i] = (b[i] - s) / L[i][i];
+  }
+  // Backward: L^T x = y
+  const x = new Float64Array(n);
+  for (let i = n - 1; i >= 0; i--) {
+    let s = 0;
+    for (let k = i + 1; k < n; k++) s += L[k][i] * x[k];
+    x[i] = (y[i] - s) / L[i][i];
+  }
+  return x;
+}
+
+// ===== GP KERNEL =====
+function rbfKernel(x1, x2, ls, sv) {
+  const d = x1 - x2;
+  return sv * Math.exp(-0.5 * d * d / (ls * ls));
+}
+
+// ===== GP POSTERIOR =====
+function gpPosterior(xObs, yObs, xTest) {
+  const n = xObs.length;
+  const m = xTest.length;
+  const { lengthScale: ls, signalVar: sv, noiseVar: nv } = CONFIG.kernel;
+
+  // K(X,X) + noise
+  const Kxx = matCreate(n, n);
+  for (let i = 0; i < n; i++) {
+    for (let j = 0; j <= i; j++) {
+      const v = rbfKernel(xObs[i], xObs[j], ls, sv) + (i === j ? nv : 0);
+      Kxx[i][j] = v;
+      Kxx[j][i] = v;
+    }
+  }
+
+  const L = choleskyDecomp(Kxx);
+  const alpha = choleskySolve(L, yObs);
+
+  const mu = new Float64Array(m);
+  const sigma2 = new Float64Array(m);
+
+  for (let t = 0; t < m; t++) {
+    // k_star
+    const ks = new Float64Array(n);
+    for (let i = 0; i < n; i++) ks[i] = rbfKernel(xTest[t], xObs[i], ls, sv);
+
+    // mean
+    let mean = 0;
+    for (let i = 0; i < n; i++) mean += ks[i] * alpha[i];
+    mu[t] = mean;
+
+    // variance via L \ k_star
+    const v = new Float64Array(n);
+    for (let i = 0; i < n; i++) {
+      let s = 0;
+      for (let k = 0; k < i; k++) s += L[i][k] * v[k];
+      v[i] = (ks[i] - s) / L[i][i];
+    }
+    let var_red = 0;
+    for (let i = 0; i < n; i++) var_red += v[i] * v[i];
+    sigma2[t] = Math.max(sv - var_red, 1e-10);
+  }
+
+  return { mu, sigma2 };
+}
+
+// ===== ACQUISITION (UCB) =====
+function ucbAcquisition(mu, sigma2, kappa) {
+  const m = mu.length;
+  const acq = new Float64Array(m);
+  for (let i = 0; i < m; i++) {
+    acq[i] = mu[i] + kappa * Math.sqrt(sigma2[i]);
+  }
+  return acq;
+}
+
+function argmax(arr) {
+  let best = 0;
+  for (let i = 1; i < arr.length; i++) {
+    if (arr[i] > arr[best]) best = i;
+  }
+  return best;
+}
+
+// ===== ANNOTATION LOGIC =====
+function getAnnotation(step, totalSteps, nextX, mu, sigma2, xObs, nextIdx, nGrid) {
+  const sigma = Math.sqrt(sigma2[nextIdx]);
+  const maxSigma = Math.sqrt(Math.max(...sigma2));
+  const muAtNext = mu[nextIdx];
+  const bestMuIdx = argmax(mu);
+  const muMax = mu[bestMuIdx];
+
+  // Relative uncertainty at next point
+  const relSigma = sigma / maxSigma;
+
+  // Is the next point near an observed point?
+  let minDist = 1;
+  for (const xo of xObs) {
+    minDist = Math.min(minDist, Math.abs(nextX - xo));
+  }
+
+  if (step === 0) {
+    return "Starting with a few random samples to get an initial picture of the function.";
+  }
+  if (step <= 2) {
+    return "Still gathering initial observations. The wide blue band means we're very uncertain almost everywhere.";
+  }
+  if (step === totalSteps - 1) {
+    return "Final step! Found the optimum region using just " + (xObs.length + 1) + " samples instead of testing everywhere.";
+  }
+
+  // Classify explore vs exploit
+  if (relSigma > 0.7 && minDist > 0.12) {
+    return "High uncertainty in this region → exploring. The model hasn't seen data here, so let's check.";
+  }
+  if (relSigma < 0.35 && Math.abs(muAtNext - muMax) < 0.15) {
+    return "Predicted value is high here → exploiting. Zeroing in near the best region we've found.";
+  }
+  if (relSigma > 0.5) {
+    return "Moderate uncertainty here → leaning toward exploration. The model wants to reduce the blue band.";
+  }
+  return "Balancing exploration and exploitation. Both predicted value and uncertainty are moderate here.";
+}
+
+// ===== STATE =====
+let state = {
+  xObs: [],
+  yObs: [],
+  step: 0,
+  showTrue: false,
+  nextX: null,
+  nextIdx: null,
+  posterior: null,
+  acq: null,
+  annotation: "",
+  done: false,
+  // For animation
+  animating: false,
+  animStart: 0,
+  prevPosterior: null,
+  prevAcq: null
+};
+
+// Precompute grid
+const xGrid = new Float64Array(CONFIG.nGrid);
+for (let i = 0; i < CONFIG.nGrid; i++) xGrid[i] = i / (CONFIG.nGrid - 1);
+
+// Precompute true function on grid
+const yTrue = new Float64Array(CONFIG.nGrid);
+let yTrueMin = Infinity, yTrueMax = -Infinity;
+for (let i = 0; i < CONFIG.nGrid; i++) {
+  yTrue[i] = trueFunction(xGrid[i]);
+  if (yTrue[i] < yTrueMin) yTrueMin = yTrue[i];
+  if (yTrue[i] > yTrueMax) yTrueMax = yTrue[i];
+}
+
+// Seeded random for reproducibility
+let rngState = 42;
+function seededRandom() {
+  rngState = (rngState * 1664525 + 1013904223) & 0x7fffffff;
+  return rngState / 0x7fffffff;
+}
+
+function resetState() {
+  rngState = 42;
+  state.xObs = [];
+  state.yObs = [];
+  state.step = 0;
+  state.showTrue = false;
+  state.nextX = null;
+  state.nextIdx = null;
+  state.posterior = null;
+  state.acq = null;
+  state.annotation = "Tap 'Next Step' to begin. We'll try to find the peak of an unknown function. Measurements are noisy — the band won't collapse to zero.";
+  state.done = false;
+  state.animating = false;
+  state.prevPosterior = null;
+  state.prevAcq = null;
+
+  // Generate initial random points
+  const initXs = [];
+  for (let i = 0; i < CONFIG.initPoints; i++) {
+    initXs.push(0.1 + 0.8 * seededRandom()); // avoid extreme edges
+  }
+  initXs.sort((a, b) => a - b);
+
+  for (const x of initXs) {
+    state.xObs.push(x);
+    state.yObs.push(trueFunction(x) + gaussianNoise(Math.sqrt(CONFIG.kernel.noiseVar)));
+  }
+
+  updatePosterior();
+  updateUI();
+  draw();
+}
+
+function updatePosterior() {
+  if (state.xObs.length === 0) return;
+
+  state.prevPosterior = state.posterior;
+  state.prevAcq = state.acq;
+
+  const post = gpPosterior(state.xObs, state.yObs, xGrid);
+  state.posterior = post;
+
+  const acq = ucbAcquisition(post.mu, post.sigma2, CONFIG.ucbKappa);
+  state.acq = acq;
+
+  // Find next point (avoid re-sampling near existing points)
+  const acqMasked = new Float64Array(acq.length);
+  for (let i = 0; i < acq.length; i++) {
+    let tooClose = false;
+    for (const xo of state.xObs) {
+      if (Math.abs(xGrid[i] - xo) < 0.02) { tooClose = true; break; }
+    }
+    acqMasked[i] = tooClose ? -1e10 : acq[i];
+  }
+
+  const bestIdx = argmax(acqMasked);
+  state.nextIdx = bestIdx;
+  state.nextX = xGrid[bestIdx];
+
+  state.annotation = getAnnotation(
+    state.step, CONFIG.maxSteps, state.nextX,
+    post.mu, post.sigma2, state.xObs, bestIdx, CONFIG.nGrid
+  );
+}
+
+// ===== CANVAS DRAWING =====
+const canvas = document.getElementById('plot');
+const ctx = canvas.getContext('2d');
+let W, H;
+const PAD = { top: 20, right: 20, bottom: 40, left: 50 };
+
+function resize() {
+  const wrap = document.getElementById('canvas-wrap');
+  const dpr = window.devicePixelRatio || 1;
+  W = wrap.clientWidth;
+  H = wrap.clientHeight;
+  canvas.width = W * dpr;
+  canvas.height = H * dpr;
+  canvas.style.width = W + 'px';
+  canvas.style.height = H + 'px';
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  draw();
+}
+
+// Data range for y-axis
+function getYRange() {
+  let ymin = yTrueMin - 0.3;
+  let ymax = yTrueMax + 0.3;
+  if (state.posterior) {
+    for (let i = 0; i < CONFIG.nGrid; i++) {
+      const lo = state.posterior.mu[i] - 2 * Math.sqrt(state.posterior.sigma2[i]);
+      const hi = state.posterior.mu[i] + 2 * Math.sqrt(state.posterior.sigma2[i]);
+      if (lo < ymin) ymin = lo;
+      if (hi > ymax) ymax = hi;
+    }
+  }
+  return { ymin, ymax };
+}
+
+function xToCanvas(x) {
+  return PAD.left + x * (W - PAD.left - PAD.right);
+}
+
+function yToCanvas(y, ymin, ymax) {
+  const plotH = H - PAD.top - PAD.bottom;
+  return PAD.top + plotH * (1 - (y - ymin) / (ymax - ymin));
+}
+
+function draw(animT) {
+  if (typeof animT === 'undefined') animT = 1;
+
+  ctx.clearRect(0, 0, W, H);
+  const { ymin, ymax } = getYRange();
+  const plotW = W - PAD.left - PAD.right;
+  const plotH = H - PAD.top - PAD.bottom;
+
+  // Grid lines
+  ctx.strokeStyle = '#f0f0f0';
+  ctx.lineWidth = 1;
+  for (let i = 0; i <= 4; i++) {
+    const yv = ymin + (ymax - ymin) * i / 4;
+    const cy = yToCanvas(yv, ymin, ymax);
+    ctx.beginPath();
+    ctx.moveTo(PAD.left, cy);
+    ctx.lineTo(W - PAD.right, cy);
+    ctx.stroke();
+  }
+
+  // Axes
+  ctx.strokeStyle = '#d1d5db';
+  ctx.lineWidth = 1.5;
+  ctx.beginPath();
+  ctx.moveTo(PAD.left, PAD.top);
+  ctx.lineTo(PAD.left, H - PAD.bottom);
+  ctx.lineTo(W - PAD.right, H - PAD.bottom);
+  ctx.stroke();
+
+  // x-axis labels
+  ctx.fillStyle = '#9ca3af';
+  ctx.font = '12px -apple-system, sans-serif';
+  ctx.textAlign = 'center';
+  for (let i = 0; i <= 4; i++) {
+    const xv = i / 4;
+    ctx.fillText(xv.toFixed(1), xToCanvas(xv), H - PAD.bottom + 18);
+  }
+
+  // y-axis labels
+  ctx.textAlign = 'right';
+  for (let i = 0; i <= 4; i++) {
+    const yv = ymin + (ymax - ymin) * i / 4;
+    ctx.fillText(yv.toFixed(1), PAD.left - 8, yToCanvas(yv, ymin, ymax) + 4);
+  }
+
+  // True function (dashed gray)
+  if (state.showTrue) {
+    ctx.strokeStyle = 'var(--color-true-fn)';
+    ctx.setLineDash([6, 4]);
+    ctx.lineWidth = 1.5;
+    ctx.beginPath();
+    for (let i = 0; i < CONFIG.nGrid; i++) {
+      const cx = xToCanvas(xGrid[i]);
+      const cy = yToCanvas(yTrue[i], ymin, ymax);
+      if (i === 0) ctx.moveTo(cx, cy); else ctx.lineTo(cx, cy);
+    }
+    ctx.stroke();
+    ctx.setLineDash([]);
+  }
+
+  // GP posterior
+  if (state.posterior) {
+    const post = state.posterior;
+    const prev = state.prevPosterior;
+
+    // Interpolate for animation
+    function getMu(i) {
+      if (animT >= 1 || !prev) return post.mu[i];
+      return prev.mu[i] + (post.mu[i] - prev.mu[i]) * animT;
+    }
+    function getSigma2(i) {
+      if (animT >= 1 || !prev) return post.sigma2[i];
+      return prev.sigma2[i] + (post.sigma2[i] - prev.sigma2[i]) * animT;
+    }
+
+    // Confidence band
+    ctx.fillStyle = 'rgba(37, 99, 235, 0.12)';
+    ctx.beginPath();
+    for (let i = 0; i < CONFIG.nGrid; i++) {
+      const cx = xToCanvas(xGrid[i]);
+      const hi = getMu(i) + 2 * Math.sqrt(getSigma2(i));
+      const cy = yToCanvas(hi, ymin, ymax);
+      if (i === 0) ctx.moveTo(cx, cy); else ctx.lineTo(cx, cy);
+    }
+    for (let i = CONFIG.nGrid - 1; i >= 0; i--) {
+      const cx = xToCanvas(xGrid[i]);
+      const lo = getMu(i) - 2 * Math.sqrt(getSigma2(i));
+      const cy = yToCanvas(lo, ymin, ymax);
+      ctx.lineTo(cx, cy);
+    }
+    ctx.closePath();
+    ctx.fill();
+
+    // Band outline
+    ctx.strokeStyle = 'rgba(37, 99, 235, 0.25)';
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    for (let i = 0; i < CONFIG.nGrid; i++) {
+      const cx = xToCanvas(xGrid[i]);
+      const hi = getMu(i) + 2 * Math.sqrt(getSigma2(i));
+      if (i === 0) ctx.moveTo(cx, yToCanvas(hi, ymin, ymax));
+      else ctx.lineTo(cx, yToCanvas(hi, ymin, ymax));
+    }
+    ctx.stroke();
+    ctx.beginPath();
+    for (let i = 0; i < CONFIG.nGrid; i++) {
+      const cx = xToCanvas(xGrid[i]);
+      const lo = getMu(i) - 2 * Math.sqrt(getSigma2(i));
+      if (i === 0) ctx.moveTo(cx, yToCanvas(lo, ymin, ymax));
+      else ctx.lineTo(cx, yToCanvas(lo, ymin, ymax));
+    }
+    ctx.stroke();
+
+    // GP mean
+    ctx.strokeStyle = '#2563eb';
+    ctx.lineWidth = 2.5;
+    ctx.beginPath();
+    for (let i = 0; i < CONFIG.nGrid; i++) {
+      const cx = xToCanvas(xGrid[i]);
+      const cy = yToCanvas(getMu(i), ymin, ymax);
+      if (i === 0) ctx.moveTo(cx, cy); else ctx.lineTo(cx, cy);
+    }
+    ctx.stroke();
+
+    // Acquisition function (small, at bottom)
+    if (!state.done && state.acq) {
+      const acqH = plotH * 0.12;
+      const acqBottom = H - PAD.bottom;
+      const acqTop = acqBottom - acqH;
+
+      let acqMin = Infinity, acqMax = -Infinity;
+      for (let i = 0; i < CONFIG.nGrid; i++) {
+        if (state.acq[i] < acqMin) acqMin = state.acq[i];
+        if (state.acq[i] > acqMax) acqMax = state.acq[i];
+      }
+      const acqRange = acqMax - acqMin || 1;
+
+      ctx.fillStyle = 'rgba(249, 115, 22, 0.06)';
+      ctx.beginPath();
+      ctx.moveTo(xToCanvas(xGrid[0]), acqBottom);
+      for (let i = 0; i < CONFIG.nGrid; i++) {
+        const cx = xToCanvas(xGrid[i]);
+        const cy = acqBottom - acqH * (state.acq[i] - acqMin) / acqRange;
+        ctx.lineTo(cx, cy);
+      }
+      ctx.lineTo(xToCanvas(xGrid[CONFIG.nGrid - 1]), acqBottom);
+      ctx.closePath();
+      ctx.fill();
+
+      ctx.strokeStyle = 'rgba(249, 115, 22, 0.4)';
+      ctx.lineWidth = 1.2;
+      ctx.beginPath();
+      for (let i = 0; i < CONFIG.nGrid; i++) {
+        const cx = xToCanvas(xGrid[i]);
+        const cy = acqBottom - acqH * (state.acq[i] - acqMin) / acqRange;
+        if (i === 0) ctx.moveTo(cx, cy); else ctx.lineTo(cx, cy);
+      }
+      ctx.stroke();
+
+      // Label
+      ctx.fillStyle = 'rgba(249, 115, 22, 0.6)';
+      ctx.font = '10px -apple-system, sans-serif';
+      ctx.textAlign = 'left';
+      ctx.fillText('acquisition', PAD.left + 4, acqTop + 10);
+    }
+  }
+
+  // Observed points
+  for (let i = 0; i < state.xObs.length; i++) {
+    const cx = xToCanvas(state.xObs[i]);
+    const cy = yToCanvas(state.yObs[i], ymin, ymax);
+    ctx.fillStyle = '#1e293b';
+    ctx.beginPath();
+    ctx.arc(cx, cy, 5.5, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.fillStyle = '#fff';
+    ctx.beginPath();
+    ctx.arc(cx, cy, 2, 0, Math.PI * 2);
+    ctx.fill();
+  }
+
+  // Next sample point
+  if (state.nextX !== null && !state.done && animT >= 1) {
+    const cx = xToCanvas(state.nextX);
+    const muY = state.posterior.mu[state.nextIdx];
+    const cy = yToCanvas(muY, ymin, ymax);
+
+    // Vertical dashed line
+    ctx.strokeStyle = 'rgba(239, 68, 68, 0.4)';
+    ctx.setLineDash([4, 3]);
+    ctx.lineWidth = 1.5;
+    ctx.beginPath();
+    ctx.moveTo(cx, PAD.top);
+    ctx.lineTo(cx, H - PAD.bottom);
+    ctx.stroke();
+    ctx.setLineDash([]);
+
+    // Pulsing circle
+    const pulse = 1 + 0.15 * Math.sin(Date.now() / 200);
+    ctx.fillStyle = '#ef4444';
+    ctx.beginPath();
+    ctx.arc(cx, cy, 8 * pulse, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.fillStyle = '#fff';
+    ctx.beginPath();
+    ctx.arc(cx, cy, 3.5, 0, Math.PI * 2);
+    ctx.fill();
+
+    // "Next sample" label
+    ctx.fillStyle = '#ef4444';
+    ctx.font = 'bold 12px -apple-system, sans-serif';
+    ctx.textAlign = cx > W / 2 ? 'right' : 'left';
+    const labelX = cx > W / 2 ? cx - 14 : cx + 14;
+    ctx.fillText('next sample', labelX, cy - 14);
+  }
+
+  // Best found marker
+  if (state.xObs.length > 0) {
+    let bestIdx = 0;
+    for (let i = 1; i < state.yObs.length; i++) {
+      if (state.yObs[i] > state.yObs[bestIdx]) bestIdx = i;
+    }
+    const cx = xToCanvas(state.xObs[bestIdx]);
+    const cy = yToCanvas(state.yObs[bestIdx], ymin, ymax);
+    ctx.strokeStyle = '#22c55e';
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.arc(cx, cy, 10, 0, Math.PI * 2);
+    ctx.stroke();
+
+    if (state.done) {
+      ctx.fillStyle = '#22c55e';
+      ctx.font = 'bold 12px -apple-system, sans-serif';
+      ctx.textAlign = cx > W / 2 ? 'right' : 'left';
+      const lx = cx > W / 2 ? cx - 16 : cx + 16;
+      ctx.fillText('best found!', lx, cy - 16);
+    }
+  }
+}
+
+// ===== ANIMATION LOOP =====
+let rafId = null;
+
+function animationLoop(timestamp) {
+  if (!state.animating) return;
+  const elapsed = timestamp - state.animStart;
+  const t = Math.min(elapsed / CONFIG.animDuration, 1);
+  // Ease out
+  const eased = 1 - (1 - t) * (1 - t);
+  draw(eased);
+  if (t < 1) {
+    rafId = requestAnimationFrame(animationLoop);
+  } else {
+    state.animating = false;
+    draw(1);
+    // Continue pulsing the next-sample marker
+    pulseLoop();
+  }
+}
+
+function pulseLoop() {
+  if (state.animating || state.done) return;
+  if (state.nextX !== null) {
+    draw(1);
+    rafId = requestAnimationFrame(() => pulseLoop());
+  }
+}
+
+function startAnimation() {
+  state.animating = true;
+  state.animStart = performance.now();
+  if (rafId) cancelAnimationFrame(rafId);
+  rafId = requestAnimationFrame(animationLoop);
+}
+
+// ===== UI =====
+const btnNext = document.getElementById('btn-next');
+const btnReset = document.getElementById('btn-reset');
+const btnToggle = document.getElementById('btn-toggle');
+const stepLabel = document.getElementById('step-label');
+const annotBox = document.getElementById('annotation-box');
+
+function updateUI() {
+  stepLabel.textContent = state.done
+    ? 'Done!'
+    : `Step ${state.step} of ${CONFIG.maxSteps}`;
+  btnNext.disabled = state.done;
+  btnNext.textContent = state.step === 0 ? 'Next Step' : 'Next Step';
+  btnToggle.textContent = state.showTrue ? 'Hide true fn' : 'Show true fn';
+
+  if (state.annotation) {
+    annotBox.textContent = state.annotation;
+    annotBox.classList.remove('hidden');
+  } else {
+    annotBox.classList.add('hidden');
+  }
+}
+
+btnNext.addEventListener('click', () => {
+  if (state.done || state.animating) return;
+
+  if (state.step < CONFIG.maxSteps && state.nextX !== null) {
+    // Evaluate next point
+    const yNew = trueFunction(state.nextX) + gaussianNoise(Math.sqrt(CONFIG.kernel.noiseVar));
+    state.xObs.push(state.nextX);
+    state.yObs.push(yNew);
+    state.step++;
+
+    if (state.step >= CONFIG.maxSteps) {
+      state.done = true;
+      state.nextX = null;
+      state.nextIdx = null;
+      state.showTrue = true;
+
+      // Compute final posterior
+      state.prevPosterior = state.posterior;
+      const post = gpPosterior(state.xObs, state.yObs, xGrid);
+      state.posterior = post;
+      state.acq = null;
+
+      state.annotation = "Done! Found the peak region using only "
+        + state.xObs.length + " samples. The GP prediction (blue) closely matches the true function (gray dashes).";
+    } else {
+      updatePosterior();
+    }
+
+    updateUI();
+    startAnimation();
+  }
+});
+
+btnReset.addEventListener('click', () => {
+  if (rafId) cancelAnimationFrame(rafId);
+  resetState();
+});
+
+btnToggle.addEventListener('click', () => {
+  state.showTrue = !state.showTrue;
+  updateUI();
+  draw(1);
+});
+
+// ===== INIT =====
+window.addEventListener('resize', resize);
+resize();
+resetState();
+// Start pulse animation
+pulseLoop();
+</script>
+</body>
+</html>
