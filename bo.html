@@ -218,36 +218,36 @@
 </div>
 
 <script>
-// ===== CONFIGURATION =====
+/*  ===== CONFIGURATION ===== */
 const CONFIG = {
   maxSteps: 15,
   initPoints: 3,
-  nGrid: 200,          // resolution of GP posterior
+  nGrid: 200,          /*  resolution of GP posterior */
   kernel: {
     lengthScale: 0.15,
     signalVar: 1.0,
-    noiseVar: 0.02      // observation noise variance (measurements are noisy)
+    noiseVar: 0.02      /*  observation noise variance (measurements are noisy) */
   },
-  ucbKappa: 2.0,        // UCB exploration parameter
-  animDuration: 400      // ms for transition
+  ucbKappa: 2.0,        /*  UCB exploration parameter */
+  animDuration: 400      /*  ms for transition */
 };
 
-// ===== TRUE FUNCTION (easy to swap) =====
+/*  ===== TRUE FUNCTION (easy to swap) ===== */
 function trueFunction(x) {
-  // Multi-modal: 3 peaks of different heights, clearly non-convex
+  /*  Multi-modal: 3 peaks of different heights, clearly non-convex */
   return 0.7 * Math.exp(-60 * (x - 0.2) * (x - 0.2))
        + 0.45 * Math.exp(-50 * (x - 0.5) * (x - 0.5))
        + 1.2 * Math.exp(-70 * (x - 0.78) * (x - 0.78));
 }
 
-// ===== GAUSSIAN NOISE (Box-Muller, uses seeded RNG) =====
+/*  ===== GAUSSIAN NOISE (Box-Muller, uses seeded RNG) ===== */
 function gaussianNoise(stddev) {
   const u1 = Math.max(seededRandom(), 1e-10);
   const u2 = seededRandom();
   return stddev * Math.sqrt(-2 * Math.log(u1)) * Math.cos(2 * Math.PI * u2);
 }
 
-// ===== LINEAR ALGEBRA HELPERS =====
+/*  ===== LINEAR ALGEBRA HELPERS ===== */
 function matCreate(n, m) {
   const a = new Array(n);
   for (let i = 0; i < n; i++) a[i] = new Float64Array(m);
@@ -274,14 +274,14 @@ function choleskyDecomp(A) {
 
 function choleskySolve(L, b) {
   const n = L.length;
-  // Forward: L y = b
+  /*  Forward: L y = b */
   const y = new Float64Array(n);
   for (let i = 0; i < n; i++) {
     let s = 0;
     for (let k = 0; k < i; k++) s += L[i][k] * y[k];
     y[i] = (b[i] - s) / L[i][i];
   }
-  // Backward: L^T x = y
+  /*  Backward: L^T x = y */
   const x = new Float64Array(n);
   for (let i = n - 1; i >= 0; i--) {
     let s = 0;
@@ -291,19 +291,19 @@ function choleskySolve(L, b) {
   return x;
 }
 
-// ===== GP KERNEL =====
+/*  ===== GP KERNEL ===== */
 function rbfKernel(x1, x2, ls, sv) {
   const d = x1 - x2;
   return sv * Math.exp(-0.5 * d * d / (ls * ls));
 }
 
-// ===== GP POSTERIOR =====
+/*  ===== GP POSTERIOR ===== */
 function gpPosterior(xObs, yObs, xTest) {
   const n = xObs.length;
   const m = xTest.length;
   const { lengthScale: ls, signalVar: sv, noiseVar: nv } = CONFIG.kernel;
 
-  // K(X,X) + noise
+  /*  K(X,X) + noise */
   const Kxx = matCreate(n, n);
   for (let i = 0; i < n; i++) {
     for (let j = 0; j <= i; j++) {
@@ -320,16 +320,16 @@ function gpPosterior(xObs, yObs, xTest) {
   const sigma2 = new Float64Array(m);
 
   for (let t = 0; t < m; t++) {
-    // k_star
+    /*  k_star */
     const ks = new Float64Array(n);
     for (let i = 0; i < n; i++) ks[i] = rbfKernel(xTest[t], xObs[i], ls, sv);
 
-    // mean
+    /*  mean */
     let mean = 0;
     for (let i = 0; i < n; i++) mean += ks[i] * alpha[i];
     mu[t] = mean;
 
-    // variance via L \ k_star
+    /*  variance via L \ k_star */
     const v = new Float64Array(n);
     for (let i = 0; i < n; i++) {
       let s = 0;
@@ -344,7 +344,7 @@ function gpPosterior(xObs, yObs, xTest) {
   return { mu, sigma2 };
 }
 
-// ===== ACQUISITION (UCB) =====
+/*  ===== ACQUISITION (UCB) ===== */
 function ucbAcquisition(mu, sigma2, kappa) {
   const m = mu.length;
   const acq = new Float64Array(m);
@@ -362,7 +362,7 @@ function argmax(arr) {
   return best;
 }
 
-// ===== ANNOTATION LOGIC =====
+/*  ===== ANNOTATION LOGIC ===== */
 function getAnnotation(step, totalSteps, nextX, mu, sigma2, xObs, nextIdx, nGrid) {
   const sigma = Math.sqrt(sigma2[nextIdx]);
   const maxSigma = Math.sqrt(Math.max(...sigma2));
@@ -370,10 +370,10 @@ function getAnnotation(step, totalSteps, nextX, mu, sigma2, xObs, nextIdx, nGrid
   const bestMuIdx = argmax(mu);
   const muMax = mu[bestMuIdx];
 
-  // Relative uncertainty at next point
+  /*  Relative uncertainty at next point */
   const relSigma = sigma / maxSigma;
 
-  // Is the next point near an observed point?
+  /*  Is the next point near an observed point? */
   let minDist = 1;
   for (const xo of xObs) {
     minDist = Math.min(minDist, Math.abs(nextX - xo));
@@ -389,7 +389,7 @@ function getAnnotation(step, totalSteps, nextX, mu, sigma2, xObs, nextIdx, nGrid
     return "Final step! Found the optimum region using just " + (xObs.length + 1) + " samples instead of testing everywhere.";
   }
 
-  // Classify explore vs exploit
+  /*  Classify explore vs exploit */
   if (relSigma > 0.7 && minDist > 0.12) {
     return "High uncertainty in this region → exploring. The model hasn't seen data here, so let's check.";
   }
@@ -402,7 +402,7 @@ function getAnnotation(step, totalSteps, nextX, mu, sigma2, xObs, nextIdx, nGrid
   return "Balancing exploration and exploitation. Both predicted value and uncertainty are moderate here.";
 }
 
-// ===== STATE =====
+/*  ===== STATE ===== */
 let state = {
   xObs: [],
   yObs: [],
@@ -414,18 +414,18 @@ let state = {
   acq: null,
   annotation: "",
   done: false,
-  // For animation
+  /*  For animation */
   animating: false,
   animStart: 0,
   prevPosterior: null,
   prevAcq: null
 };
 
-// Precompute grid
+/*  Precompute grid */
 const xGrid = new Float64Array(CONFIG.nGrid);
 for (let i = 0; i < CONFIG.nGrid; i++) xGrid[i] = i / (CONFIG.nGrid - 1);
 
-// Precompute true function on grid
+/*  Precompute true function on grid */
 const yTrue = new Float64Array(CONFIG.nGrid);
 let yTrueMin = Infinity, yTrueMax = -Infinity;
 for (let i = 0; i < CONFIG.nGrid; i++) {
@@ -434,7 +434,7 @@ for (let i = 0; i < CONFIG.nGrid; i++) {
   if (yTrue[i] > yTrueMax) yTrueMax = yTrue[i];
 }
 
-// Seeded random for reproducibility
+/*  Seeded random for reproducibility */
 let rngState = 42;
 function seededRandom() {
   rngState = (rngState * 1664525 + 1013904223) & 0x7fffffff;
@@ -457,10 +457,10 @@ function resetState() {
   state.prevPosterior = null;
   state.prevAcq = null;
 
-  // Generate initial random points
+  /*  Generate initial random points */
   const initXs = [];
   for (let i = 0; i < CONFIG.initPoints; i++) {
-    initXs.push(0.1 + 0.8 * seededRandom()); // avoid extreme edges
+    initXs.push(0.1 + 0.8 * seededRandom()); /*  avoid extreme edges */
   }
   initXs.sort((a, b) => a - b);
 
@@ -486,7 +486,7 @@ function updatePosterior() {
   const acq = ucbAcquisition(post.mu, post.sigma2, CONFIG.ucbKappa);
   state.acq = acq;
 
-  // Find next point (avoid re-sampling near existing points)
+  /*  Find next point (avoid re-sampling near existing points) */
   const acqMasked = new Float64Array(acq.length);
   for (let i = 0; i < acq.length; i++) {
     let tooClose = false;
@@ -506,7 +506,7 @@ function updatePosterior() {
   );
 }
 
-// ===== CANVAS DRAWING =====
+/*  ===== CANVAS DRAWING ===== */
 const canvas = document.getElementById('plot');
 const ctx = canvas.getContext('2d');
 let W, H;
@@ -525,7 +525,7 @@ function resize() {
   draw();
 }
 
-// Data range for y-axis
+/*  Data range for y-axis */
 function getYRange() {
   let ymin = yTrueMin - 0.3;
   let ymax = yTrueMax + 0.3;
@@ -557,7 +557,7 @@ function draw(animT) {
   const plotW = W - PAD.left - PAD.right;
   const plotH = H - PAD.top - PAD.bottom;
 
-  // Grid lines
+  /*  Grid lines */
   ctx.strokeStyle = '#f0f0f0';
   ctx.lineWidth = 1;
   for (let i = 0; i <= 4; i++) {
@@ -569,7 +569,7 @@ function draw(animT) {
     ctx.stroke();
   }
 
-  // Axes
+  /*  Axes */
   ctx.strokeStyle = '#d1d5db';
   ctx.lineWidth = 1.5;
   ctx.beginPath();
@@ -578,7 +578,7 @@ function draw(animT) {
   ctx.lineTo(W - PAD.right, H - PAD.bottom);
   ctx.stroke();
 
-  // x-axis labels
+  /*  x-axis labels */
   ctx.fillStyle = '#9ca3af';
   ctx.font = '12px -apple-system, sans-serif';
   ctx.textAlign = 'center';
@@ -587,14 +587,14 @@ function draw(animT) {
     ctx.fillText(xv.toFixed(1), xToCanvas(xv), H - PAD.bottom + 18);
   }
 
-  // y-axis labels
+  /*  y-axis labels */
   ctx.textAlign = 'right';
   for (let i = 0; i <= 4; i++) {
     const yv = ymin + (ymax - ymin) * i / 4;
     ctx.fillText(yv.toFixed(1), PAD.left - 8, yToCanvas(yv, ymin, ymax) + 4);
   }
 
-  // True function (dashed gray)
+  /*  True function (dashed gray) */
   if (state.showTrue) {
     ctx.strokeStyle = 'var(--color-true-fn)';
     ctx.setLineDash([6, 4]);
@@ -609,12 +609,12 @@ function draw(animT) {
     ctx.setLineDash([]);
   }
 
-  // GP posterior
+  /*  GP posterior */
   if (state.posterior) {
     const post = state.posterior;
     const prev = state.prevPosterior;
 
-    // Interpolate for animation
+    /*  Interpolate for animation */
     function getMu(i) {
       if (animT >= 1 || !prev) return post.mu[i];
       return prev.mu[i] + (post.mu[i] - prev.mu[i]) * animT;
@@ -624,7 +624,7 @@ function draw(animT) {
       return prev.sigma2[i] + (post.sigma2[i] - prev.sigma2[i]) * animT;
     }
 
-    // Confidence band
+    /*  Confidence band */
     ctx.fillStyle = 'rgba(37, 99, 235, 0.12)';
     ctx.beginPath();
     for (let i = 0; i < CONFIG.nGrid; i++) {
@@ -642,7 +642,7 @@ function draw(animT) {
     ctx.closePath();
     ctx.fill();
 
-    // Band outline
+    /*  Band outline */
     ctx.strokeStyle = 'rgba(37, 99, 235, 0.25)';
     ctx.lineWidth = 1;
     ctx.beginPath();
@@ -662,7 +662,7 @@ function draw(animT) {
     }
     ctx.stroke();
 
-    // GP mean
+    /*  GP mean */
     ctx.strokeStyle = '#2563eb';
     ctx.lineWidth = 2.5;
     ctx.beginPath();
@@ -673,7 +673,7 @@ function draw(animT) {
     }
     ctx.stroke();
 
-    // Acquisition function (small, at bottom)
+    /*  Acquisition function (small, at bottom) */
     if (!state.done && state.acq) {
       const acqH = plotH * 0.12;
       const acqBottom = H - PAD.bottom;
@@ -708,7 +708,7 @@ function draw(animT) {
       }
       ctx.stroke();
 
-      // Label
+      /*  Label */
       ctx.fillStyle = 'rgba(249, 115, 22, 0.6)';
       ctx.font = '10px -apple-system, sans-serif';
       ctx.textAlign = 'left';
@@ -716,7 +716,7 @@ function draw(animT) {
     }
   }
 
-  // Observed points
+  /*  Observed points */
   for (let i = 0; i < state.xObs.length; i++) {
     const cx = xToCanvas(state.xObs[i]);
     const cy = yToCanvas(state.yObs[i], ymin, ymax);
@@ -730,13 +730,13 @@ function draw(animT) {
     ctx.fill();
   }
 
-  // Next sample point
+  /*  Next sample point */
   if (state.nextX !== null && !state.done && animT >= 1) {
     const cx = xToCanvas(state.nextX);
     const muY = state.posterior.mu[state.nextIdx];
     const cy = yToCanvas(muY, ymin, ymax);
 
-    // Vertical dashed line
+    /*  Vertical dashed line */
     ctx.strokeStyle = 'rgba(239, 68, 68, 0.4)';
     ctx.setLineDash([4, 3]);
     ctx.lineWidth = 1.5;
@@ -746,7 +746,7 @@ function draw(animT) {
     ctx.stroke();
     ctx.setLineDash([]);
 
-    // Pulsing circle
+    /*  Pulsing circle */
     const pulse = 1 + 0.15 * Math.sin(Date.now() / 200);
     ctx.fillStyle = '#ef4444';
     ctx.beginPath();
@@ -757,7 +757,7 @@ function draw(animT) {
     ctx.arc(cx, cy, 3.5, 0, Math.PI * 2);
     ctx.fill();
 
-    // "Next sample" label
+    /*  "Next sample" label */
     ctx.fillStyle = '#ef4444';
     ctx.font = 'bold 12px -apple-system, sans-serif';
     ctx.textAlign = cx > W / 2 ? 'right' : 'left';
@@ -765,7 +765,7 @@ function draw(animT) {
     ctx.fillText('next sample', labelX, cy - 14);
   }
 
-  // Best found marker
+  /*  Best found marker */
   if (state.xObs.length > 0) {
     let bestIdx = 0;
     for (let i = 1; i < state.yObs.length; i++) {
@@ -789,14 +789,14 @@ function draw(animT) {
   }
 }
 
-// ===== ANIMATION LOOP =====
+/*  ===== ANIMATION LOOP ===== */
 let rafId = null;
 
 function animationLoop(timestamp) {
   if (!state.animating) return;
   const elapsed = timestamp - state.animStart;
   const t = Math.min(elapsed / CONFIG.animDuration, 1);
-  // Ease out
+  /*  Ease out */
   const eased = 1 - (1 - t) * (1 - t);
   draw(eased);
   if (t < 1) {
@@ -804,7 +804,7 @@ function animationLoop(timestamp) {
   } else {
     state.animating = false;
     draw(1);
-    // Continue pulsing the next-sample marker
+    /*  Continue pulsing the next-sample marker */
     pulseLoop();
   }
 }
@@ -824,7 +824,7 @@ function startAnimation() {
   rafId = requestAnimationFrame(animationLoop);
 }
 
-// ===== UI =====
+/*  ===== UI ===== */
 const btnNext = document.getElementById('btn-next');
 const btnReset = document.getElementById('btn-reset');
 const btnToggle = document.getElementById('btn-toggle');
@@ -851,7 +851,7 @@ btnNext.addEventListener('click', () => {
   if (state.done || state.animating) return;
 
   if (state.step < CONFIG.maxSteps && state.nextX !== null) {
-    // Evaluate next point
+    /*  Evaluate next point */
     const yNew = trueFunction(state.nextX) + gaussianNoise(Math.sqrt(CONFIG.kernel.noiseVar));
     state.xObs.push(state.nextX);
     state.yObs.push(yNew);
@@ -863,7 +863,7 @@ btnNext.addEventListener('click', () => {
       state.nextIdx = null;
       state.showTrue = true;
 
-      // Compute final posterior
+      /*  Compute final posterior */
       state.prevPosterior = state.posterior;
       const post = gpPosterior(state.xObs, state.yObs, xGrid);
       state.posterior = post;
@@ -891,11 +891,11 @@ btnToggle.addEventListener('click', () => {
   draw(1);
 });
 
-// ===== INIT =====
+/*  ===== INIT ===== */
 window.addEventListener('resize', resize);
 resize();
 resetState();
-// Start pulse animation
+/*  Start pulse animation */
 pulseLoop();
 </script>
 </body>
